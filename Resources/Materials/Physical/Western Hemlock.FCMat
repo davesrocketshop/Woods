@@ -1,0 +1,24 @@
+# File created by the Woods workbench
+General:
+  UUID: "a2a651a1-bd07-4906-8495-f28b1e1c5d59"
+  Name: "Western Hemlock"
+  Author: "Woods Workbench"
+  License: "GPL 3.0"
+  Description: "Automatically created by the Woods workbench"
+AppearanceModels:
+  Texture Rendering:
+    UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"
+    AmbientColor: "(0.333333, 0.333333, 0.333333, 1)"
+    DiffuseColor: "(0.859, 0.780, 0.584, 1)"
+    EmissiveColor: "(0, 0, 0, 1)"
+    Shininess: "0.9"
+    SpecularColor: "(0.533333, 0.533333, 0.533333, 1)"
+    Transparency: "0"
+Models:
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "465.0 kg/m^3"
+    PoissonRatio: "0.485"
+    YoungsModulus: "11240000000.0 Pa"
+    YieldStrength: "77900000.0 Pa"
+    CompressiveStrength: "37300000.0 Pa"
