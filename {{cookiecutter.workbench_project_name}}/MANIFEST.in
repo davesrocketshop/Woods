@@ -1,0 +1,1 @@
+recursive-include freecad/{{cookiecutter.workbench_module_name}}/resources *
