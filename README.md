@@ -14,3 +14,7 @@ TODO: add details here
 
 David Carter
 dcarter@davidcarter.ca
+
+## Acknowledgements
+
+[Wood icon by Icons8](https://icons8.com)

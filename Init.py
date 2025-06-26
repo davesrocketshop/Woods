@@ -32,4 +32,4 @@ matdir = str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/Resources/Material
 materials.SetString("ModuleDir", matdir)
 moddir = str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/Resources/Models"))
 materials.SetString("ModuleModelDir", moddir)
-materials.SetString("ModuleIcon", str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/Resources/icons/woods.svg")))
+materials.SetString("ModuleIcon", str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/Resources/icons/woods.png")))

@@ -7,7 +7,7 @@
   <maintainer email="dcarter@davidcarter.ca">David Carter</maintainer>
   <license file="LICENSE">LGPL-2.1-or-later</license>
   <url type="repository" branch="master">https://github.com/davesrocketshop/Woods</url>
-  <icon>Resources/icons/woods.svg</icon>
+  <icon>Resources/icons/woods.png</icon>
   <freecadmin>1.0</freecadmin>
 
   <content>

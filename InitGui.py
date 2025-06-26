@@ -28,7 +28,7 @@ import FreeCAD
 class Woods(Workbench):
     """Woods is not *really* a workbench, so this class is basically empty."""
 
-    Icon = FreeCAD.getUserAppDataDir() + "Mod/Woods/Resources/icons/woods.svg"
+    Icon = FreeCAD.getUserAppDataDir() + "Mod/Woods/Resources/icons/woods.png"
 
     def __init__(self):
         super().__init__()
