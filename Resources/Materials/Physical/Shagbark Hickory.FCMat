@@ -1,0 +1,24 @@
+# File created by the Woods workbench
+General:
+  UUID: "aa8d626e-c9d5-40b4-9682-f4a30134d74b"
+  Name: "Shagbark Hickory"
+  Author: "Woods Workbench"
+  License: "GPL 3.0"
+  Description: "Automatically created by the Woods workbench"
+AppearanceModels:
+  Texture Rendering:
+    UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"
+    AmbientColor: "(0.333333, 0.333333, 0.333333, 1)"
+    DiffuseColor: "(0.859, 0.780, 0.584, 1)"
+    EmissiveColor: "(0, 0, 0, 1)"
+    Shininess: "0.9"
+    SpecularColor: "(0.533333, 0.533333, 0.533333, 1)"
+    Transparency: "0"
+Models:
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "800.0 kg/m^3"
+    PoissonRatio: "0.3756923076923077"
+    YoungsModulus: "14900000000.0 Pa"
+    YieldStrength: "139300000.0 Pa"
+    CompressiveStrength: "63500000.0 Pa"

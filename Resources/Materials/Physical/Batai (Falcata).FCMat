@@ -1,0 +1,24 @@
+# File created by the Woods workbench
+General:
+  UUID: "f065b7e0-e255-4679-bff8-920c4521c395"
+  Name: "Batai (Falcata)"
+  Author: "Woods Workbench"
+  License: "GPL 3.0"
+  Description: "Automatically created by the Woods workbench"
+AppearanceModels:
+  Texture Rendering:
+    UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"
+    AmbientColor: "(0.333333, 0.333333, 0.333333, 1)"
+    DiffuseColor: "(0.859, 0.780, 0.584, 1)"
+    EmissiveColor: "(0, 0, 0, 1)"
+    Shininess: "0.9"
+    SpecularColor: "(0.533333, 0.533333, 0.533333, 1)"
+    Transparency: "0"
+Models:
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "360.0 kg/m^3"
+    PoissonRatio: "0.38557142857142856"
+    YoungsModulus: "8529999999.999999 Pa"
+    YieldStrength: "57700000.0 Pa"
+    CompressiveStrength: "29500000.0 Pa"
