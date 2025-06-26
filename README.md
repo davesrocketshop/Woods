@@ -2,10 +2,6 @@
 
 Woods material database
 
-## Dependencies
-
-'numpy',
-
 ## Quick Start
 
 TODO: add details here
