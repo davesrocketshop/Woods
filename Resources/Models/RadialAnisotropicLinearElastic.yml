@@ -1,0 +1,69 @@
+---
+# ***************************************************************************
+# *                                                                         *
+# *   Copyright (c) 2025 David Carter <dcarter@davidcarter.ca>              *
+# *                                                                         *
+# *   This program is free software; you can redistribute it and/or modify  *
+# *   it under the terms of the GNU Lesser General Public License (LGPL)    *
+# *   as published by the Free Software Foundation; either version 2 of     *
+# *   the License, or (at your option) any later version.                   *
+# *   for detail see the LICENCE text file.                                 *
+# *                                                                         *
+# *   This program is distributed in the hope that it will be useful,       *
+# *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+# *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+# *   GNU Library General Public License for more details.                  *
+# *                                                                         *
+# *   You should have received a copy of the GNU Library General Public     *
+# *   License along with this program; if not, write to the Free Software   *
+# *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  *
+# *   USA                                                                   *
+# *                                                                         *
+# ***************************************************************************
+
+Model:
+  Name: 'Radial Anisotropic Linear Elastic'
+  UUID: '38e548e1-fa33-4551-b4b6-9901546f1d8b'
+  URL: 'https://en.wikipedia.org/wiki/Linear_elasticity'
+  Description: >
+    Materials that are linearly elastic obey Hooke's law i.e. the stress and
+    strain relationship is linear. For radial anisotropic materials the values
+    differ along the longitudal and radial (perpendicular to the longitudal)
+    directions.
+  DOI: ""
+  PoissonRatioRadial:
+    DisplayName: "Poisson Ratio in the radial direction"
+    Type: 'Float'
+    Units: ''
+    URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
+    Description: "Poisson's ratio [unitless]"
+  PoissonRatioLongitudal:
+    DisplayName: "Poisson Ratio in the longitudal direction"
+    Type: 'Float'
+    Units: ''
+    URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
+    Description: "Poisson's ratio [unitless]"
+  ShearModulusRadial:
+    DisplayName: "Shear Modulus in the radial direction"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
+    Description: "Shear modulus in [FreeCAD Pressure unit]"
+  ShearModulusLongitudal:
+    DisplayName: "Shear Modulus in the longitudal direction"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
+    Description: "Shear modulus in [FreeCAD Pressure unit]"
+  YoungsModulusRadial:
+    DisplayName: "Young's Modulus in the radial direction"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
+    Description: "Young's modulus (or E-Module) in [FreeCAD Pressure unit]"
+  YoungsModulusLongitudal:
+    DisplayName: "Young's Modulus in the longitudal direction"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
+    Description: "Young's modulus (or E-Module) in [FreeCAD Pressure unit]"

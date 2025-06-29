@@ -25,10 +25,47 @@ __author__ = "David Carter"
 __url__ = "https://www.davesrocketshop.com"
 
 from openpyxl import load_workbook
+import os
 import uuid
 
-FILENAME = "Y:\\Materials\\wood-database.com\\Wood Properties V1.xlsx"
+FILENAME = "Resources/Data/Wood Properties V2.xlsx"
+IMAGES = "Resources/Data/Images"
 OUTPUT_DIR = "Resources/Materials/Physical"
+
+# Column numbers
+COLUMN_NAME = 0 # A
+COLUMN_STEAM_BEND = 3 # D
+COLUMN_HARDNESS = 4 # E
+COLUMN_DENSITY = 5 # F
+COLUMN_FLEX = 6 # G
+COLUMN_POISSON_LONG = 7 # I
+COLUMN_POISSON_RAD = 8 # J
+COLUMN_FLEX = 9 # K
+COLUMN_COMPRESS = 10 # L
+COLUMN_SHRINK_RAD = 11 # M
+COLUMN_SHRINK_TAN = 12 # N
+COLUMN_SHRINK_VOL = 13 # O
+COLUMN_IMAGE = 14 # Q
+COLUMN_ALT_NAMES = 15 # R
+COLUMN_TAGS = 16 # S
+COLUMN_REF1 = 17 # T
+COLUMN_REF2 = 18 # U
+COLUMN_UUID = 19 # V
+COLUMN_UUID2 = 20 # W
+
+def parseURL(cell) -> str:
+    if cell.hyperlink:
+        return str(cell.hyperlink.target)
+    return cell.value
+
+def parseSteam(cell) -> str | None:
+    if cell.value is None:
+        return None
+    steam = cell.value
+    if steam == '?':
+        return None
+    return steam
+    # return steam.strip("%")
 
 def parseCell(cell : str) -> str:
     value = cell
@@ -48,18 +85,28 @@ def parseFloatCell(cell : str) -> float:
         pass
     return 0
 
-def parseRow(row : tuple) -> tuple:
-    category = row[0]
-    if category is None:
-        category = ''
-    name = parseCell(row[1])
-    density = parseFloatCell(row[2])
-    poisson = parseFloatCell(row[3])
-    young = parseFloatCell(row[4])
-    tensileYield = parseFloatCell(row[5])
-    compressiveYield = parseFloatCell(row[7])
-    result = (category, name, density, poisson, young, tensileYield, compressiveYield)
-    print(result)
+def parseRow(row : tuple) -> dict:
+    result = {}
+    result["name"] = row[COLUMN_NAME].value
+    result["steam"] = parseSteam(row[COLUMN_STEAM_BEND])
+    result["hardness"] = row[COLUMN_HARDNESS].value
+    result["density"] = row[COLUMN_DENSITY].value
+    result["flex"] = row[COLUMN_FLEX].value
+    result["poisson_long"] = row[COLUMN_POISSON_LONG].value
+    result["poisson_rad"] = row[COLUMN_POISSON_RAD].value
+    result["flex"] = row[COLUMN_FLEX].value
+    result["compress"] = row[COLUMN_COMPRESS].value
+    result["shrink_rad"] = row[COLUMN_SHRINK_RAD].value
+    result["shrink_tan"] = row[COLUMN_SHRINK_TAN].value
+    result["shrink_vol"] = row[COLUMN_SHRINK_VOL].value
+    result["image"] = row[COLUMN_IMAGE].value
+    result["alt"] = row[COLUMN_ALT_NAMES].value
+    result["tags"] = row[COLUMN_TAGS].value
+    result["ref1"] = parseURL(row[COLUMN_REF1])
+    result["ref2"] = parseURL(row[COLUMN_REF2])
+    result["UUID"] = row[COLUMN_UUID].value
+    result["UUID2"] = row[COLUMN_UUID2].value
+    # print(result)
     return result
 
 def createYaml(row : tuple) -> str:
@@ -102,8 +149,27 @@ def createCard(row : tuple) -> None:
         outfile.write(yaml)
         outfile.close()
 
-wb = load_workbook(filename=FILENAME, read_only=True)
-ws = wb['onshape']
-for row in ws.iter_rows(min_row=3, max_row=253, max_col=9, values_only=True):
+def checkImage(data : dict) -> None:
+    if data["image"] is not None:
+        image = f"{IMAGES}/{data['image']}"
+        if not os.path.exists(image):
+            print(data['image'])
+
+# wb = load_workbook(filename=FILENAME, read_only=True)
+wb = load_workbook(filename=FILENAME, read_only=False)
+ws = wb['All']
+# for row in ws.iter_rows(min_row=5, max_row=247, max_col=22, values_only=True):
+for row in ws.iter_rows(min_row=5, max_row=247, max_col=22):
+    cell = row[20]
+    # print(type(cell))
+    # if cell.hyperlink:
+    #     print(f"Cell with hyperlink: {cell.hyperlink.target}")
+    #     cell.value = str(cell.hyperlink.target)
+    # else:
+    #     print(cell.value)
+    # print(row)
     parsed = parseRow(row)
-    createCard(parsed)
+    checkImage(parsed)
+    # createCard(parsed)
+
+wb.save(filename=FILENAME)
