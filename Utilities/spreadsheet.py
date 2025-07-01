@@ -28,10 +28,14 @@ from openpyxl import load_workbook
 import os
 import uuid
 from typing import Any
+import cv2
+from base64 import b64encode
+from PIL import Image
+from io import BytesIO
 
 FILENAME = "Resources/Data/Wood Properties V2.xlsx"
 IMAGES = "Resources/Data/Images"
-OUTPUT_DIR = "Resources/Materials/Physical"
+OUTPUT_DIR = "Resources/Materials"
 
 # Column numbers
 COLUMN_NAME = 0 # A
@@ -140,7 +144,7 @@ def getTags(row : dict) -> list:
             tags.append(tag)
     return tags
 
-def createYaml(row : dict, averaged : bool = False) -> str:
+def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool = False) -> str:
     yam = "# File created by the Woods workbench\n"
     yam += "General:\n"
     # Add UUIDs
@@ -157,9 +161,11 @@ def createYaml(row : dict, averaged : bool = False) -> str:
         yam += f'  Tags:\n'
         for tag in tags:
             yam += f'    - "{tag}"\n'
-    yam += f'  Description: |2\n'
-    yam += '    Automatically created by the Woods workbench\n'
+    yam += f'  Description: >-2\n'
+    yam += '    Automatically created by the Woods workbench.\n'
     if averaged:
+        yam += '    \n'
+        yam += '    \n'
         yam += '    This file includes averaged values in the absence of known values.\n'
         yam += '    Use with caution as the values may produce incorrect results.\n'
 
@@ -167,12 +173,13 @@ def createYaml(row : dict, averaged : bool = False) -> str:
     yam += "  Texture Rendering:\n"
     yam += '    UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"\n'
     yam += '    AmbientColor: "(0.333333, 0.333333, 0.333333, 1)"\n'
-    yam += '    DiffuseColor: "(0.859, 0.780, 0.584, 1)"\n'
+    yam += f'    DiffuseColor: "{diffuse}"\n'
     yam += '    EmissiveColor: "(0, 0, 0, 1)"\n'
     yam += '    Shininess: "0.9"\n'
     yam += '    SpecularColor: "(0.533333, 0.533333, 0.533333, 1)"\n'
     yam += '    Transparency: "0"\n'
-
+    if base is not None:
+        yam += '    TextureImage:' + base
     yam += 'Models:\n'
     yam += '  LinearElastic:\n'
     yam += '    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"\n'
@@ -184,27 +191,64 @@ def createYaml(row : dict, averaged : bool = False) -> str:
 
     return yam
 
-def createCard(row : dict) -> None:
+def createCard(row : dict, base : str | None, diffuse : tuple) -> None:
     name = row["name"]
     if name is not None:
         if row["averaged"]:
-            yaml = createYaml(row, True)
+            yaml = createYaml(row, base, diffuse, True)
             outputName = f"{OUTPUT_DIR}/{name} (Averaged).FCMat"
             outfile = open(outputName, "w", encoding="utf-8")
             outfile.write(yaml)
             outfile.close()
 
-        yaml = createYaml(row, False)
+        yaml = createYaml(row, base, diffuse, False)
         outputName = f"{OUTPUT_DIR}/{name}.FCMat"
         outfile = open(outputName, "w", encoding="utf-8")
         outfile.write(yaml)
         outfile.close()
 
-def checkImage(data : dict) -> None:
+def imageToPng(imageData : bytes) -> bytes:
+    # Create an in-memory binary stream for the input JPG data
+    imageBuffer = BytesIO(imageData)
+
+    # Open the image using Pillow
+    img = Image.open(imageBuffer)
+
+    # Create an in-memory binary stream for the output PNG data
+    pngBuffer = BytesIO()
+
+    # Save the image as PNG to the output buffer
+    img.save(pngBuffer, format="PNG")
+
+    # Get the bytes data of the PNG image
+    pngData = pngBuffer.getvalue()
+
+    return pngData
+
+def checkImage(data : dict) -> tuple[str | None, Any]:
+    base = None
+    diffuse = (0.859, 0.780, 0.584, 1)
     if data["image"] is not None:
         image = f"{IMAGES}/{data['image']}"
-        if not os.path.exists(image):
-            print(data['image'])
+        if os.path.exists(image):
+            im = cv2.imread(image)
+            A = cv2.mean(im)
+            diffuse = (A[2] / 255.0, A[1] / 255.0, A[0] / 255.0, 1.0)
+
+            # Convert the image to base64
+            with open(image, "rb") as image_file:
+                png = imageToPng(image_file.read())
+                encoded_string = b64encode(png)
+                encoded_output = encoded_string.decode('utf-8')
+
+            base = " |-2"
+            while len(encoded_output) > 0:
+                base += "\n      "
+                base += encoded_output[:74]
+                encoded_output = encoded_output[74:]
+            base += "\n"
+
+    return base, diffuse
 
 # wb = load_workbook(filename=FILENAME, read_only=True)
 wb = load_workbook(filename=FILENAME, read_only=False)
@@ -220,8 +264,8 @@ for row in ws.iter_rows(min_row=5, max_row=247, max_col=22):
     #     print(cell.value)
     # print(row)
     parsed = parseRow(row)
-    # checkImage(parsed)
-    createCard(parsed)
+    base, diffuse = checkImage(parsed)
+    createCard(parsed, base, diffuse)
 # print(f"VrlBack={wb.defined_names['VrlBack'].attr_text}")
 # print(f"VlrBack={wb.defined_names['VlrBack'].attr_text}")
 # print(f"VrlTop={wb.defined_names['VrlTop'].attr_text}")
