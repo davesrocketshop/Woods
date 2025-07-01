@@ -27,6 +27,7 @@ __url__ = "https://www.davesrocketshop.com"
 from openpyxl import load_workbook
 import os
 import uuid
+from typing import Any
 
 FILENAME = "Resources/Data/Wood Properties V2.xlsx"
 IMAGES = "Resources/Data/Images"
@@ -53,6 +54,12 @@ COLUMN_REF2 = 18 # U
 COLUMN_UUID = 19 # V
 COLUMN_UUID2 = 20 # W
 
+# Averaged values
+VrlBack = 0.056
+VlrBack = 0.376
+VrlTop = 0.048
+VlrTop = 0.386
+
 def parseURL(cell) -> str:
     if cell.hyperlink:
         return str(cell.hyperlink.target)
@@ -67,16 +74,20 @@ def parseSteam(cell) -> str | None:
     return steam
     # return steam.strip("%")
 
-def parseCell(cell : str) -> str:
-    value = cell
+def parseCell(cell : Any) -> tuple[Any, bool]:
+    value = cell.value
     if value is None:
-        return ''
-    if value.startswith("="):
-        values = value.split(',')
-        value = values[1][:-1].strip('\'"')
-    value = value.replace("\n", " ")
-    value = value.replace('"', '')
-    return value
+        return '', False
+    if isinstance(value, str) and value.startswith("="):
+        if value == "=VrlBack":
+            return VrlBack, True
+        if value == "=VlrBack":
+            return VlrBack, True
+        if value == "=VrlTop":
+            return VrlTop, True
+        if value == "=VlrTop":
+            return VlrTop, True
+    return value, False
 
 def parseFloatCell(cell : str) -> float:
     try:
@@ -87,13 +98,17 @@ def parseFloatCell(cell : str) -> float:
 
 def parseRow(row : tuple) -> dict:
     result = {}
-    result["name"] = row[COLUMN_NAME].value
+    result["name"] = str(row[COLUMN_NAME].value).strip().title()
     result["steam"] = parseSteam(row[COLUMN_STEAM_BEND])
     result["hardness"] = row[COLUMN_HARDNESS].value
     result["density"] = row[COLUMN_DENSITY].value
     result["flex"] = row[COLUMN_FLEX].value
-    result["poisson_long"] = row[COLUMN_POISSON_LONG].value
-    result["poisson_rad"] = row[COLUMN_POISSON_RAD].value
+    result["poisson_long"], long_averaged = parseCell(row[COLUMN_POISSON_LONG])
+    result["poisson_rad"], rad_averaged = parseCell(row[COLUMN_POISSON_RAD])
+    result["long_averaged"] = long_averaged
+    result["rad_averaged"] = rad_averaged
+    averaged = (long_averaged or rad_averaged)
+    result["averaged"] = averaged
     result["flex"] = row[COLUMN_FLEX].value
     result["compress"] = row[COLUMN_COMPRESS].value
     result["shrink_rad"] = row[COLUMN_SHRINK_RAD].value
@@ -104,20 +119,49 @@ def parseRow(row : tuple) -> dict:
     result["tags"] = row[COLUMN_TAGS].value
     result["ref1"] = parseURL(row[COLUMN_REF1])
     result["ref2"] = parseURL(row[COLUMN_REF2])
+    if row[COLUMN_UUID].value is None:
+        row[COLUMN_UUID].value = str(uuid.uuid4())
     result["UUID"] = row[COLUMN_UUID].value
+    if row[COLUMN_UUID2].value is None and averaged:
+        row[COLUMN_UUID2].value = str(uuid.uuid4())
     result["UUID2"] = row[COLUMN_UUID2].value
-    # print(result)
     return result
 
-def createYaml(row : tuple) -> str:
+def getTags(row : dict) -> list:
+    tags = []
+    names = row['alt'].split(',')
+    for name in names:
+        tag = name.strip().lower()
+        tags.append(tag)
+    if row['tags'] is not None:
+        names = row['tags'].split(',')
+        for name in names:
+            tag = name.strip().lower()
+            tags.append(tag)
+    return tags
+
+def createYaml(row : dict, averaged : bool = False) -> str:
     yam = "# File created by the Woods workbench\n"
     yam += "General:\n"
     # Add UUIDs
-    yam += f'  UUID: "{uuid.uuid4()}"\n'
-    yam += f'  Name: "{row[1]}"\n'
+    if averaged:
+        yam += f'  UUID: "{row["UUID2"]}"\n'
+        yam += f'  Name: "{row["name"]} (Averaged)"\n'
+    else:
+        yam += f'  UUID: "{row["UUID"]}"\n'
+        yam += f'  Name: "{row["name"]}"\n'
     yam += f'  Author: "Woods Workbench"\n'
     yam += f'  License: "GPL 3.0"\n'
-    yam += f'  Description: "Automatically created by the Woods workbench"\n'
+    tags = getTags(row)
+    if len(tags) > 0:
+        yam += f'  Tags:\n'
+        for tag in tags:
+            yam += f'    - "{tag}"\n'
+    yam += f'  Description: |2\n'
+    yam += '    Automatically created by the Woods workbench\n'
+    if averaged:
+        yam += '    This file includes averaged values in the absence of known values.\n'
+        yam += '    Use with caution as the values may produce incorrect results.\n'
 
     yam += "AppearanceModels:\n"
     yam += "  Texture Rendering:\n"
@@ -132,18 +176,25 @@ def createYaml(row : tuple) -> str:
     yam += 'Models:\n'
     yam += '  LinearElastic:\n'
     yam += '    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"\n'
-    yam += f'    Density: "{row[2]} kg/m^3"\n'
-    yam += f'    PoissonRatio: "{row[3]}"\n'
-    yam += f'    YoungsModulus: "{row[4]} Pa"\n'
-    yam += f'    YieldStrength: "{row[5]} Pa"\n'
-    yam += f'    CompressiveStrength: "{row[6]} Pa"\n'
+    yam += f'    Density: "{row["density"]} kg/m^3"\n'
+    # yam += f'    PoissonRatio: "{row[3]}"\n'
+    # yam += f'    YoungsModulus: "{row[4]} Pa"\n'
+    # yam += f'    YieldStrength: "{row[5]} Pa"\n'
+    # yam += f'    CompressiveStrength: "{row[6]} Pa"\n'
 
     return yam
 
-def createCard(row : tuple) -> None:
-    name = row[1]
+def createCard(row : dict) -> None:
+    name = row["name"]
     if name is not None:
-        yaml = createYaml(row)
+        if row["averaged"]:
+            yaml = createYaml(row, True)
+            outputName = f"{OUTPUT_DIR}/{name} (Averaged).FCMat"
+            outfile = open(outputName, "w", encoding="utf-8")
+            outfile.write(yaml)
+            outfile.close()
+
+        yaml = createYaml(row, False)
         outputName = f"{OUTPUT_DIR}/{name}.FCMat"
         outfile = open(outputName, "w", encoding="utf-8")
         outfile.write(yaml)
@@ -169,7 +220,11 @@ for row in ws.iter_rows(min_row=5, max_row=247, max_col=22):
     #     print(cell.value)
     # print(row)
     parsed = parseRow(row)
-    checkImage(parsed)
-    # createCard(parsed)
+    # checkImage(parsed)
+    createCard(parsed)
+# print(f"VrlBack={wb.defined_names['VrlBack'].attr_text}")
+# print(f"VlrBack={wb.defined_names['VlrBack'].attr_text}")
+# print(f"VrlTop={wb.defined_names['VrlTop'].attr_text}")
+# print(f"VlrTop={wb.defined_names['VlrTop'].attr_text}")
 
 wb.save(filename=FILENAME)
