@@ -154,8 +154,10 @@ def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool =
     else:
         yam += f'  UUID: "{row["UUID"]}"\n'
         yam += f'  Name: "{row["name"]}"\n'
-    yam += f'  Author: "Woods Workbench"\n'
-    yam += f'  License: "GPL 3.0"\n'
+    yam += f'  Author: "Gregory Holmberg"\n'
+    yam += f'  License: "CDLA-Sharing-1.0"\n'
+    yam += f'  SourceURL: "https://research.fs.usda.gov/treesearch/62200"'
+    yam += f'  ReferenceSource: "USDA FPL Wood Handbook 2021"'
     tags = getTags(row)
     if len(tags) > 0:
         yam += f'  Tags:\n'
@@ -233,10 +235,13 @@ def checkImage(data : dict) -> tuple[str | None, Any]:
         if os.path.exists(image):
             im = cv2.imread(image)
             A = cv2.mean(im)
+
+            # BGR to RGB
             diffuse = (A[2] / 255.0, A[1] / 255.0, A[0] / 255.0, 1.0)
 
             # Convert the image to base64
             with open(image, "rb") as image_file:
+                # FC 1.0 only supported PNG
                 png = imageToPng(image_file.read())
                 encoded_string = b64encode(png)
                 encoded_output = encoded_string.decode('utf-8')
@@ -256,19 +261,8 @@ ws = wb['All']
 # for row in ws.iter_rows(min_row=5, max_row=247, max_col=22, values_only=True):
 for row in ws.iter_rows(min_row=5, max_row=247, max_col=22):
     cell = row[20]
-    # print(type(cell))
-    # if cell.hyperlink:
-    #     print(f"Cell with hyperlink: {cell.hyperlink.target}")
-    #     cell.value = str(cell.hyperlink.target)
-    # else:
-    #     print(cell.value)
-    # print(row)
     parsed = parseRow(row)
     base, diffuse = checkImage(parsed)
     createCard(parsed, base, diffuse)
-# print(f"VrlBack={wb.defined_names['VrlBack'].attr_text}")
-# print(f"VlrBack={wb.defined_names['VlrBack'].attr_text}")
-# print(f"VrlTop={wb.defined_names['VrlTop'].attr_text}")
-# print(f"VlrTop={wb.defined_names['VlrTop'].attr_text}")
 
 wb.save(filename=FILENAME)
