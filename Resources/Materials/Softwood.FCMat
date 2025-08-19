@@ -1,0 +1,55 @@
+# File created by the Woods workbench
+General:
+  UUID: "f9d83964-24ca-44df-a570-d1af36756a99"
+  Name: "Softwood"
+  Author: "Gregory Holmberg"
+  License: "CDLA-Sharing-1.0"
+  SourceURL: "https://research.fs.usda.gov/treesearch/62200"
+  ReferenceSource: "USDA FPL Wood Handbook 2021"
+  Description: >-2
+    Average values typical of softwoods (Gymnosperm).
+Inherits:
+  Wood:
+    UUID: "1850ac4a-0df2-43cd-9934-e59e95b9526f"
+Models:
+  Machinability:
+    UUID: "9d81fcb2-bf81-48e3-bb57-d45ecf380096"
+    SurfaceSpeedHSS: "600000 mm/min"
+    SurfaceSpeedCarbide: "600000 mm/min"
+    UnitCuttingForce: "36900 N/mm^2"
+    ChipThicknessExponent: "0.5"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "2600"
+    HardnessUnits: "N"
+  Wood - Shrinkage:
+    UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
+    ShrinkRadial: "3.6"
+    ShrinkTangential: "6.6"
+    ShrinkVolume: "10.3"
+    ShrinkLong: "0.45"
+  Thermal:
+    UUID: '9959d007-a970-4ea7-bae4-3eb1b8b883c7'
+    ThermalConductivity: "0.18 W/m/K"
+  Sound:
+    UUID: '6b7f44ab-e48d-4568-98aa-1d88a8b6e57d'
+    SoundRadiationCoefficient: "9.7 m^4/kg/s"
+  Wood:
+    UUID: '901459aa-fd5e-43b8-aad6-71578f76c3f6'
+    MoistureContent: "12"
+    SteamBendable: "0"
+    Density: "475 kg/m^3"
+    PoissonRatioLongRad: "0.352"
+    PoissonRatioLongTan: "0.360"
+    PoissonRatioRadTan: "0.426"
+    PoissonRatioTanRad: "0.347"
+    PoissonRatioRadLong: "0.053"
+    PoissonRatioTanLong: "0.037"
+    ShearModulusLongRad: "779 MPa"
+    ShearModulusLong: "16100 kPa"
+    YoungsModulusLong: "9500 MPa"
+    YoungsModulusRadLong: "0.096"
+    YoungsModulusRad: "012 MPa"
+    CompressiveStrengthLong: "40000 kPa"
+    CompressiveStrengthCross: "10100 kPa"
+    ModulusOfRuptureLong: "71000 kPa"

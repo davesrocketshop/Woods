@@ -22,42 +22,13 @@
 # ***************************************************************************
 
 Model:
-  Name: 'Wood - Botanical'
-  UUID: '1273eaa6-8185-4130-8072-ff61132568d9'
+  Name: 'Sound'
+  UUID: '6b7f44ab-e48d-4568-98aa-1d88a8b6e57d'
   Description: >
-    Various wood properties
-  Species:
-    Type: 'String'
-    Description: >
-      Scientific name
-  SpeciesURL:
-    DisplayName: "Species URL"
-    Type: 'URL'
-    Description: "Link to wikipedia.org for the species"
-  WoodDatabase:
-    DisplayName: "Wood Database URL"
-    Type: 'URL'
-    Description: "Link to wood-database.com"
-  Softwood:
-    Type: 'Boolean'
-    Units: ''
-    URL: ''
-    Description: "Softwood (Gymnosperm) or hardwood (angiosperm)"
-  Range:
-    Type: 'List'
-    Units: ''
-    URL: ''
-    Description: >
-      Where does it grow? List of countries, regions, continents, etc.
-  CITESAppendix:
-    DisplayName: "CITES Appendix"
-    Type: 'String'
-    Description: "I, II, III, or None"
-  IUCNRedList:
-    DisplayName: "IUCN Red List Category"
-    Type: 'String'
-    Description: "EX, EW, CR, EN, VU, NT, LC, DD, NE"
-  IUCNRedListURL:
-    DisplayName: "IUCN Red List URL"
-    Type: 'URL'
-    Description: "Link to iucnredlist.org for species"
+    Sound propogation
+  SoundRadiationCoefficient:
+    DisplayName: "Sound Radiation Coefficient"
+    Type: 'Quantity'
+    Units: 'm^4/kg/s'
+    URL: "https://www.researchgate.net/publication/52001722"
+    Description: "Sound radiation coefficient"

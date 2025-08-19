@@ -27,17 +27,20 @@ Model:
   Description: >
     Varous wood properties
   Inherits:
-    - LinearElastic:
-      UUID: '7b561d1d-fb9b-44f6-9da9-56a4f74d7536'
+    - Density:
+      UUID: '454661e5-265b-4320-8e6f-fcf6223ac3af'
     - RadialAnisotropicLinearElastic:
       UUID: '38e548e1-fa33-4551-b4b6-9901546f1d8b'
-  Steam Bendable:
+  SteamBendable:
+    DisplayName: "Steam Bendable"
     Type: 'Float'
     URL: 'http://www.tropicaltimber.info/wp-content/uploads/2015/06/Wood_Machining_US_Hardwoods-Davis-E.M.1962USDA.FPL_.pdf'
     Description: >
       Percentage of pieces unbroken in a standard bending test
-  Janka Hardness:
-    Type: 'Quantity'
-    Units: 'N'
-    URL: 'https://en.wikipedia.org/wiki/Janka_hardness_test'
-    Description: "A measure of the hardness of wood"
+      1% means it bends, but no value is available
+      0% means it doesn't bend
+  MoistureContent:
+    DisplayName: "Moisture Content"
+    Type: 'Float'
+    URL: "https://en.wikipedia.org/wiki/Wood#Water_content"
+    Description: "Dryness at which the propeties were measured."

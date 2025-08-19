@@ -31,57 +31,98 @@ Model:
     differ along the longitudal and radial (perpendicular to the longitudal)
     directions.
   DOI: ""
-  PoissonRatioRadial:
-    DisplayName: "Poisson Ratio in the radial direction"
+  PoissonRatioLongRad:
+    DisplayName: "Poisson Ratio (Longitudinal->Radial)"
     Type: 'Float'
     Units: ''
     URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
-    Description: "Poisson's ratio [unitless]"
-  PoissonRatioTangential:
-    DisplayName: "Poisson Ratio in the tangential direction"
+    Description: "Poisson Ratio longitudal->radial"
+  PoissonRatioLongTan:
+    DisplayName: "Poisson Ratio (Longitudinal->Tangential)"
     Type: 'Float'
     Units: ''
     URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
-    Description: "Poisson's ratio [unitless]"
-  PoissonRatioLongitudal:
-    DisplayName: "Poisson Ratio in the longitudal direction"
+    Description: "Poisson Ratio longitudal->tangential"
+  PoissonRatioRadTan:
+    DisplayName: "Poisson Ratio (Radial->Tangential)"
     Type: 'Float'
     Units: ''
     URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
-    Description: "Poisson's ratio [unitless]"
-  ShearModulusRadial:
-    DisplayName: "Shear Modulus in the radial direction"
+    Description: "Poisson Ratio YoungsTangentialRadial->tangential"
+  PoissonRatioTanRad:
+    DisplayName: "Poisson Ratio (Tangential->Radial)"
+    Type: 'Float'
+    Units: ''
+    URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
+    Description: "Poisson Ratio tangential->radial"
+  PoissonRatioRadLong:
+    DisplayName: "Poisson Ratio (Radial->Longitudinal)"
+    Type: 'Float'
+    Units: ''
+    URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
+    Description: "Poisson Ratio radial->longitudal"
+  PoissonRatioTanLong:
+    DisplayName: "Poisson Ratio (Tangential->Longitudinal)"
+    Type: 'Float'
+    Units: ''
+    URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
+    Description: "Poisson Ratio tangential->longitudal"
+  ShearModulusLongRad:
+    DisplayName: "Shear Modulus (Longitudinal->Radial)"
     Type: 'Quantity'
-    Units: 'kPa'
+    Units: 'MPa'
     URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
-    Description: "Shear modulus in [FreeCAD Pressure unit]"
-  ShearModulusTangential:
-    DisplayName: "Shear Modulus in the tangential direction"
+    Description: "Shear Modulus long to radial (cross-grain, perpendicular to grain)"
+  ShearModulusLong:
+    DisplayName: "Shear Modulus (Longitudinal)"
     Type: 'Quantity'
-    Units: 'kPa'
+    Units: 'MPa'
     URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
-    Description: "Shear modulus in [FreeCAD Pressure unit]"
-  ShearModulusLongitudal:
-    DisplayName: "Shear Modulus in the longitudal direction"
-    Type: 'Quantity'
-    Units: 'kPa'
-    URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
-    Description: "Shear modulus in [FreeCAD Pressure unit]"
-  YoungsModulusRadial:
-    DisplayName: "Young's Modulus in the radial direction"
+    Description: "Shear, longitudinal, parallel to grain"
+  YoungsModulusLong:
+    DisplayName: "Youngs Modulus (Longitudinal)"
     Type: 'Quantity'
     Units: 'kPa'
     URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
-    Description: "Young's modulus (or E-Module) in [FreeCAD Pressure unit]"
-  YoungsTangentialRadial:
-    DisplayName: "Young's Modulus in the tangential direction"
+    Description: "Modulus of Elasticity longitudinal, parallel to grain"
+  YoungsModulusRadLong:
+    DisplayName: "Youngs Modulus (Radial/Longitudinal)"
+    Type: 'Float'
+    URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
+    Description: "Young's modulus radial/longitudal"
+  YoungsModulusRad:
+    DisplayName: "Youngs Modulus (Radial)"
+    Type: 'Quantity'
+    Units: 'MPa'
+    URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
+    Description: "Modulus of Elasticity radial (cross-grain, perpendicular to grain)"
+  UltimateStrengthLong:
+    DisplayName: "Ultimate Strength (Longitudinal)"
     Type: 'Quantity'
     Units: 'kPa'
     URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
-    Description: "Young's modulus (or E-Module) in [FreeCAD Pressure unit]"
-  YoungsModulusLongitudal:
-    DisplayName: "Young's Modulus in the longitudal direction"
+    Description: "Tensile strength, longitudinal, parallel to grain"
+  UltimateStrengthCross:
+    DisplayName: "Ultimate Strength (Cross)"
     Type: 'Quantity'
     Units: 'kPa'
     URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
-    Description: "Young's modulus (or E-Module) in [FreeCAD Pressure unit]"
+    Description: "Tensile strength, cross-grain, perpendicular to grain"
+  CompressiveStrengthLong:
+    DisplayName: "Compressive Strength (Longitudinal)"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Compressive_strength'
+    Description: "Compressive strength, longitudinal, parallel to grain"
+  CompressiveStrengthCross:
+    DisplayName: "Compressive Strength (Cross)"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Compressive_strength'
+    Description: "Compressive strength, cross-grain, perpendicular to grain"
+  ModulusOfRuptureLong:
+    DisplayName: "Modulus Of Rupture (Longitudinal)"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Flexural_strength'
+    Description: "Flexural strength, longitudinal, parallel to grain"

@@ -37,6 +37,10 @@ FILENAME = "Resources/Data/Wood Properties FC.xlsx"
 IMAGES = "Resources/Data/Images"
 OUTPUT_DIR = "Resources/Materials"
 
+ROW_MIN = 5
+ROW_MAX = 7
+COLUMN_MAX = 45
+
 # Column numbers
 COLUMN_NAME = 0 # A
 COLUMN_SOFTWOOD = 2 # C
@@ -117,12 +121,12 @@ def parseCell(cell : Any) -> tuple[Any, bool]:
             return VlrTop, True
     return value, False
 
-def parseFloatCell(cell : str) -> float:
-    try:
-        return float(parseCell(cell))
-    except ValueError:
-        pass
-    return 0
+# def parseFloatCell(cell : str) -> float:
+#     try:
+#         return float(parseCell(cell))
+#     except ValueError:
+#         pass
+#     return 0
 
 def parseRow(row : tuple) -> dict:
     result = {}
@@ -154,6 +158,29 @@ def parseRow(row : tuple) -> dict:
     if row[COLUMN_UUID2].value is None and averaged:
         row[COLUMN_UUID2].value = str(uuid.uuid4())
     result["UUID2"] = row[COLUMN_UUID2].value
+    result["range"] = row[COLUMN_RANGE].value
+    result["CITES"] = row[COLUMN_CITES].value
+    result["Redlist"] = row[COLUMN_IUCN_REDLIST].value
+    result["RedlistURL"] = row[COLUMN_IUCN_REDLIST_URL].value
+    result["MachChipThickness"] = row[COLUMN_MACH_CHIP_THICKNESS_EXPONENT].value
+    result["MachSpeedCarbide"] = row[COLUMN_MACH_SURFACE_SPEED_CARBIDE].value
+    result["MachSpeedHSS"] = row[COLUMN_MACH_SURFACE_SPEED_HSS].value
+    result["MachUnitCuttingForce"] = row[COLUMN_MACH_UNIT_CUTTING_FORCE].value
+    result["MachMaxLoad"] = row[COLUMN_MACH_MAX_LOAD].value
+    result["FlexModulusTangLong"] = row[COLUMN_FLEX_MOD_TANG_LONG].value
+    result["FlexModulusRadLong"] = row[COLUMN_FLEX_MOD_RAD_LONG].value
+    result["ShearLongRad"] = row[COLUMN_SHEAR_LONG_RAD].value
+    result["ShearLongTang"] = row[COLUMN_SHEAR_LONG_TANG].value
+    result["ShearRadTang"] = row[COLUMN_SHEAR_RAD_TANG].value
+    result["UltimateLong"] = row[COLUMN_ULTIMATE_STRENGTH_LONG].value
+    result["UltimateCross"] = row[COLUMN_ULTIMATE_STRENGTH_CROSS].value
+    result["CompressCross"] = row[COLUMN_COMPRESS_STRENGTH_CROSS].value
+    result["ShearLong"] = row[COLUMN_SHEAR_LONG].value
+    result["PoissonLongTang"] = row[COLUMN_POISSON_LONG_TANG].value
+    result["PoissonRadTang"] = row[COLUMN_POISSON_RAD_TANG].value
+    result["PoissonTangRad"] = row[COLUMN_POISSON_TANG_RAD].value
+    result["PoissonTangLong"] = row[COLUMN_POISSON_TANG_LONG].value
+    result["ThermalConductivity"] = row[COLUMN_THERMAL_CONDUCTIVITY].value
     return result
 
 def getTags(row : dict) -> list:
@@ -168,6 +195,110 @@ def getTags(row : dict) -> list:
             tag = name.strip().lower()
             tags.append(tag)
     return tags
+
+def getRange(row : dict) -> list:
+    ranges = []
+    names = row['range'].split(',')
+    for range in names:
+        ranges.append(range.strip().upper())
+    return ranges
+
+def createInherits(row : dict) -> str:
+    yam = ""
+    if row["softwood"]:
+        yam =  'Inherits:\n'
+        yam += '  Softwood:\n'
+        yam += '    UUID: "f9d83964-24ca-44df-a570-d1af36756a99"\n'
+    else:
+        yam =  'Inherits:\n'
+        yam += '  Hardwood:\n'
+        yam += '    UUID: "2a78c735-c21b-4bf9-8606-149d74f88fa8"\n'
+    return yam
+
+def createBotanical(row : dict) -> str:
+    yam =   "  Wood - Botanical:\n"
+    yam +=  '    UUID: "1273eaa6-8185-4130-8072-ff61132568d9"\n'
+    # yam += f'    Species: "{row["species"]}"\n'
+    yam += f'    SpeciesURL: "{row["ref2"]}"\n'
+    yam += f'    WoodDatabase: "{row["ref1"]}"\n'
+    yam += f'    Softwood: "{row["softwood"]}"\n'
+    ranges = getRange(row)
+    if ranges:
+        yam += f'    Range:\n'
+        for range in ranges:
+            yam += f'      - "{range}"\n'
+    if row["CITES"]:
+        yam += f'    CITESAppendix: "{row["CITES"]}"\n'
+    yam += f'    IUCNRedList: "{row["Redlist"]}"\n'
+    yam += f'    IUCNRedListURL: "{row["RedlistURL"]}"\n'
+    return yam
+
+def createMachinability(row : dict) -> str:
+    if row["MachSpeedHSS"] or row["MachSpeedCarbide"] or row["MachUnitCuttingForce"] or row["MachChipThickness"]:
+        yam =   '  Machinability:\n'
+        yam +=  '    UUID: "9d81fcb2-bf81-48e3-bb57-d45ecf380096"\n'
+        if row["MachSpeedHSS"]:
+            yam += f'    SurfaceSpeedHSS: "{row["MachSpeedHSS"]} mm/min"\n'
+        if  row["MachSpeedCarbide"]:
+            yam += f'    SurfaceSpeedCarbide: "{row["MachSpeedCarbide"]} mm/min"\n'
+        if row["MachUnitCuttingForce"]:
+            yam += f'    UnitCuttingForce: "{row["MachUnitCuttingForce"]} N/mm^2"\n'
+        if row["MachChipThickness"]:
+            yam += f'    ChipThicknessExponent: "{row["MachChipThickness"]}"\n'
+        return yam
+    else:
+        return ""
+
+def createShrinkage(row : dict) -> str:
+    yam =   '  Wood - Shrinkage:\n'
+    yam +=  '    UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"\n'
+    shrinkRadial = row["shrink_rad"]
+    shrinkTangential = row["shrink_tan"]
+    shrinkVolume = row["shrink_vol"]
+    shrinkLong = max(1 - (1 - shrinkVolume)/((1 - shrinkRadial)*(1 - shrinkTangential)), 0)
+    yam += f'    ShrinkRadial: "{shrinkRadial * 100.0}"\n'
+    yam += f'    ShrinkTangential: "{shrinkTangential * 100.0}"\n'
+    yam += f'    ShrinkVolume: "{shrinkVolume * 100.0}"\n'
+    yam += f'    ShrinkLong: "{shrinkLong * 100.0}"\n'
+    return yam
+
+def createPhysical(row : dict) -> str:
+    yam =   '  Wood:\n'
+    yam +=  '    UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"\n'
+    # yam += f'    MoistureContent: "{row["density"]}"\n'
+    yam += f'    SteamBendable: "{row["steam"] * 100.0}"\n'
+    yam += f'    Density: "{row["density"]} kg/m^3"\n'
+    yam += f'    PoissonRatioLongRad: "{row["poisson_long"]}"\n'
+    yam += f'    PoissonRatioLongTan: "{row["PoissonLongTang"]}"\n'
+    yam += f'    PoissonRatioRadTan: "{row["PoissonRadTang"]}"\n'
+    yam += f'    PoissonRatioTanRad: "{row["PoissonTangRad"]}"\n'
+    yam += f'    PoissonRatioRadLong: "{row["poisson_rad"]}"\n'
+    yam += f'    PoissonRatioTanLong: "{row["PoissonTangLong"]}"\n'
+    yam += f'    ShearModulusLongRad: "{row["ShearLongRad"]} MPa"\n'
+    yam += f'    ShearModulusLong: "{row["ShearLong"]} kPa"\n'
+    yam += f'    YoungsModulusLong: "{row["flex_mod"]} MPa"\n'
+    yam += f'    YoungsModulusRadLong: "{row["FlexModulusRadLong"]}"\n'
+    yam += f'    YoungsModulusRad: "{row["FlexModulusRadLong"] * row["flex_mod"]} MPa"\n'
+    yam += f'    UltimateStrengthLong: "{row["UltimateLong"]} kPa"\n'
+    yam += f'    UltimateStrengthCross: "{row["UltimateCross"]} kPa"\n'
+    # yam += f'    CompressiveStrengthLong: "{row["density"]} kPa"\n'
+    yam += f'    CompressiveStrengthCross: "{row["CompressCross"]} kPa"\n'
+    yam += f'    ModulusOfRuptureLong: "{row["flex_strength"]} kPa"\n'
+    return yam
+
+def createAppearance(base : str | None, diffuse : tuple) ->str:
+    yam =   "AppearanceModels:\n"
+    yam +=  "  Texture Rendering:\n"
+    yam +=  '    UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"\n'
+    yam +=  '    AmbientColor: "(0.333333, 0.333333, 0.333333, 1)"\n'
+    yam += f'    DiffuseColor: "{diffuse}"\n'
+    yam +=  '    EmissiveColor: "(0, 0, 0, 1)"\n'
+    yam +=  '    Shininess: "0.9"\n'
+    yam +=  '    SpecularColor: "(0.533333, 0.533333, 0.533333, 1)"\n'
+    yam +=  '    Transparency: "0"\n'
+    if base is not None:
+        yam += '    TextureImage:' + base
+    return yam
 
 def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool = False) -> str:
     yam = "# File created by the Woods workbench\n"
@@ -195,26 +326,14 @@ def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool =
         yam += '    \n'
         yam += '    This file includes averaged values in the absence of known values.\n'
         yam += '    Use with caution as the values may produce incorrect results.\n'
+    yam += createInherits(row)
 
-    yam += "AppearanceModels:\n"
-    yam += "  Texture Rendering:\n"
-    yam += '    UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"\n'
-    yam += '    AmbientColor: "(0.333333, 0.333333, 0.333333, 1)"\n'
-    yam += f'    DiffuseColor: "{diffuse}"\n'
-    yam += '    EmissiveColor: "(0, 0, 0, 1)"\n'
-    yam += '    Shininess: "0.9"\n'
-    yam += '    SpecularColor: "(0.533333, 0.533333, 0.533333, 1)"\n'
-    yam += '    Transparency: "0"\n'
-    if base is not None:
-        yam += '    TextureImage:' + base
     yam += 'Models:\n'
-    yam += '  LinearElastic:\n'
-    yam += '    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"\n'
-    yam += f'    Density: "{row["density"]} kg/m^3"\n'
-    # yam += f'    PoissonRatio: "{row[3]}"\n'
-    # yam += f'    YoungsModulus: "{row[4]} Pa"\n'
-    # yam += f'    YieldStrength: "{row[5]} Pa"\n'
-    # yam += f'    CompressiveStrength: "{row[6]} Pa"\n'
+    yam += createBotanical(row)
+    yam += createMachinability(row)
+    yam += createShrinkage(row)
+    yam += createPhysical(row)
+    yam += createAppearance(base, diffuse)
 
     return yam
 
@@ -266,8 +385,8 @@ def checkImage(data : dict) -> tuple[str | None, Any]:
 
             # Convert the image to base64
             with open(image, "rb") as image_file:
-                # png = imageToPng(image_file.read())
-                png = image_file.read()
+                # v1.0 only works with PNG. Use this to maintain compatibility
+                png = imageToPng(image_file.read())
                 encoded_string = b64encode(png)
                 encoded_output = encoded_string.decode('utf-8')
 
@@ -280,11 +399,14 @@ def checkImage(data : dict) -> tuple[str | None, Any]:
 
     return base, diffuse
 
+# Create the output folder if required
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
 # wb = load_workbook(filename=FILENAME, read_only=True)
 wb = load_workbook(filename=FILENAME, read_only=False)
 ws = wb['All']
 # for row in ws.iter_rows(min_row=5, max_row=247, max_col=22, values_only=True):
-for row in ws.iter_rows(min_row=5, max_row=7, max_col=22):
+for row in ws.iter_rows(min_row=ROW_MIN, max_row=ROW_MAX, max_col=COLUMN_MAX):
     cell = row[20]
     parsed = parseRow(row)
     base, diffuse = checkImage(parsed)

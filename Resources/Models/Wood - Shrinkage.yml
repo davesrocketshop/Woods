@@ -26,15 +26,19 @@ Model:
   UUID: 'ec84f5bb-99cf-448a-86a5-cac2ebcab31c'
   Description: >
     Shrinkage properties of wood
-  Shrink Radial:
+  ShrinkRadial:
+    DisplayName: "Shrink Radial"
     Type: 'Float'
-    Description: "From green to 0% moisture content"
-  Shrink Tangential:
+    Description: "From green to 0% moisture content (%)"
+  ShrinkTangential:
+    DisplayName: "Shrink Tangential"
     Type: 'Float'
-    Description: "From green to 0% moisture content"
-  Shrink Volume:
+    Description: "From green to 0% moisture content (%)"
+  ShrinkVolume:
+    DisplayName: "Shrink Volume"
     Type: 'Float'
-    Description: "From green to 0% moisture content"
-  Shrink Long:
+    Description: "From green to 0% moisture content (%)"
+  ShrinkLong:
+    DisplayName: "Shrink Longitudinal"
     Type: 'Float'
-    Description: "Calculated from the other shrinkage parameters"
+    Description: "Calculated from the other shrinkage parameters (%)"
