@@ -237,7 +237,8 @@ def checkImage(data : dict) -> tuple[str | None, Any]:
 
             # Convert the image to base64
             with open(image, "rb") as image_file:
-                png = imageToPng(image_file.read())
+                # png = imageToPng(image_file.read())
+                png = image_file.read()
                 encoded_string = b64encode(png)
                 encoded_output = encoded_string.decode('utf-8')
 
