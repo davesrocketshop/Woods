@@ -33,30 +33,54 @@ from base64 import b64encode
 from PIL import Image
 from io import BytesIO
 
-FILENAME = "Resources/Data/Wood Properties V2.xlsx"
+FILENAME = "Resources/Data/Wood Properties FC.xlsx"
 IMAGES = "Resources/Data/Images"
 OUTPUT_DIR = "Resources/Materials"
 
 # Column numbers
 COLUMN_NAME = 0 # A
+COLUMN_SOFTWOOD = 2 # C
 COLUMN_STEAM_BEND = 3 # D
 COLUMN_HARDNESS = 4 # E
 COLUMN_DENSITY = 5 # F
-COLUMN_FLEX = 6 # G
-COLUMN_POISSON_LONG = 7 # I
-COLUMN_POISSON_RAD = 8 # J
-COLUMN_FLEX = 9 # K
-COLUMN_COMPRESS = 10 # L
-COLUMN_SHRINK_RAD = 11 # M
-COLUMN_SHRINK_TAN = 12 # N
-COLUMN_SHRINK_VOL = 13 # O
-COLUMN_IMAGE = 14 # Q
-COLUMN_ALT_NAMES = 15 # R
-COLUMN_TAGS = 16 # S
-COLUMN_REF1 = 17 # T
-COLUMN_REF2 = 18 # U
-COLUMN_UUID = 19 # V
-COLUMN_UUID2 = 20 # W
+COLUMN_FLEX_MODULUS = 6 # G
+COLUMN_POISSON_LONG = 7 # H
+COLUMN_POISSON_RAD = 8 # I
+COLUMN_FLEX_STRENGTH = 9 # J
+COLUMN_COMPRESS = 10 # K
+COLUMN_SHRINK_RAD = 11 # L
+COLUMN_SHRINK_TAN = 12 # M
+COLUMN_SHRINK_VOL = 13 # N
+COLUMN_IMAGE = 14 # O
+COLUMN_ALT_NAMES = 15 # P
+COLUMN_TAGS = 16 # Q
+COLUMN_REF1 = 17 # R
+COLUMN_REF2 = 18 # S
+COLUMN_UUID = 19 # T
+COLUMN_UUID2 = 20 # U
+COLUMN_RANGE = 21 # V
+COLUMN_CITES = 22 # W
+COLUMN_IUCN_REDLIST = 23 # X
+COLUMN_IUCN_REDLIST_URL = 24 # Y
+COLUMN_MACH_CHIP_THICKNESS_EXPONENT = 25 # Z
+COLUMN_MACH_SURFACE_SPEED_CARBIDE = 26 # AA
+COLUMN_MACH_SURFACE_SPEED_HSS = 27 # AB
+COLUMN_MACH_UNIT_CUTTING_FORCE = 28 # AC
+COLUMN_MACH_MAX_LOAD = 29 # AD
+COLUMN_FLEX_MOD_TANG_LONG = 30 # AE
+COLUMN_FLEX_MOD_RAD_LONG = 31 # AF
+COLUMN_SHEAR_LONG_RAD = 32 # AG
+COLUMN_SHEAR_LONG_TANG = 33 # AH
+COLUMN_SHEAR_RAD_TANG = 34 # AI
+COLUMN_ULTIMATE_STRENGTH_LONG = 35 # AJ
+COLUMN_ULTIMATE_STRENGTH_CROSS = 36 # AK
+COLUMN_COMPRESS_STRENGTH_CROSS = 37 # AL
+COLUMN_SHEAR_LONG = 38 # AM
+COLUMN_POISSON_LONG_TANG = 39 # AN
+COLUMN_POISSON_RAD_TANG = 40 # AO
+COLUMN_POISSON_TANG_RAD = 41 # AP
+COLUMN_POISSON_TANG_LONG = 42 # AQ
+COLUMN_THERMAL_CONDUCTIVITY = 43 # AR
 
 # Averaged values
 VrlBack = 0.056
@@ -103,17 +127,18 @@ def parseFloatCell(cell : str) -> float:
 def parseRow(row : tuple) -> dict:
     result = {}
     result["name"] = str(row[COLUMN_NAME].value).strip().title()
+    result["softwood"] = row[COLUMN_SOFTWOOD].value
     result["steam"] = parseSteam(row[COLUMN_STEAM_BEND])
     result["hardness"] = row[COLUMN_HARDNESS].value
     result["density"] = row[COLUMN_DENSITY].value
-    result["flex"] = row[COLUMN_FLEX].value
+    result["flex_mod"] = row[COLUMN_FLEX_MODULUS].value
     result["poisson_long"], long_averaged = parseCell(row[COLUMN_POISSON_LONG])
     result["poisson_rad"], rad_averaged = parseCell(row[COLUMN_POISSON_RAD])
     result["long_averaged"] = long_averaged
     result["rad_averaged"] = rad_averaged
     averaged = (long_averaged or rad_averaged)
     result["averaged"] = averaged
-    result["flex"] = row[COLUMN_FLEX].value
+    result["flex_strength"] = row[COLUMN_FLEX_STRENGTH].value
     result["compress"] = row[COLUMN_COMPRESS].value
     result["shrink_rad"] = row[COLUMN_SHRINK_RAD].value
     result["shrink_tan"] = row[COLUMN_SHRINK_TAN].value
@@ -154,8 +179,10 @@ def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool =
     else:
         yam += f'  UUID: "{row["UUID"]}"\n'
         yam += f'  Name: "{row["name"]}"\n'
-    yam += f'  Author: "Woods Workbench"\n'
-    yam += f'  License: "GPL 3.0"\n'
+    yam += f'  Author: "Gregory Holmberg"\n'
+    yam += f'  License: "CDLA-Sharing-1.0"\n'
+    yam += f'  SourceURL: "https://research.fs.usda.gov/treesearch/62200"\n'
+    yam += f'  ReferenceSource: "USDA FPL Wood Handbook 2021"\n'
     tags = getTags(row)
     if len(tags) > 0:
         yam += f'  Tags:\n'
@@ -233,6 +260,8 @@ def checkImage(data : dict) -> tuple[str | None, Any]:
         if os.path.exists(image):
             im = cv2.imread(image)
             A = cv2.mean(im)
+
+            # BGR to RGB
             diffuse = (A[2] / 255.0, A[1] / 255.0, A[0] / 255.0, 1.0)
 
             # Convert the image to base64
@@ -255,21 +284,10 @@ def checkImage(data : dict) -> tuple[str | None, Any]:
 wb = load_workbook(filename=FILENAME, read_only=False)
 ws = wb['All']
 # for row in ws.iter_rows(min_row=5, max_row=247, max_col=22, values_only=True):
-for row in ws.iter_rows(min_row=5, max_row=247, max_col=22):
+for row in ws.iter_rows(min_row=5, max_row=7, max_col=22):
     cell = row[20]
-    # print(type(cell))
-    # if cell.hyperlink:
-    #     print(f"Cell with hyperlink: {cell.hyperlink.target}")
-    #     cell.value = str(cell.hyperlink.target)
-    # else:
-    #     print(cell.value)
-    # print(row)
     parsed = parseRow(row)
     base, diffuse = checkImage(parsed)
     createCard(parsed, base, diffuse)
-# print(f"VrlBack={wb.defined_names['VrlBack'].attr_text}")
-# print(f"VlrBack={wb.defined_names['VlrBack'].attr_text}")
-# print(f"VrlTop={wb.defined_names['VrlTop'].attr_text}")
-# print(f"VlrTop={wb.defined_names['VlrTop'].attr_text}")
 
 wb.save(filename=FILENAME)
