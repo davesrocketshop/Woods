@@ -37,6 +37,12 @@ Model:
     Units: ''
     URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
     Description: "Poisson's ratio [unitless]"
+  PoissonRatioTangential:
+    DisplayName: "Poisson Ratio in the tangential direction"
+    Type: 'Float'
+    Units: ''
+    URL: 'https://en.wikipedia.org/wiki/Poisson%27s_ratio'
+    Description: "Poisson's ratio [unitless]"
   PoissonRatioLongitudal:
     DisplayName: "Poisson Ratio in the longitudal direction"
     Type: 'Float'
@@ -49,6 +55,12 @@ Model:
     Units: 'kPa'
     URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
     Description: "Shear modulus in [FreeCAD Pressure unit]"
+  ShearModulusTangential:
+    DisplayName: "Shear Modulus in the tangential direction"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
+    Description: "Shear modulus in [FreeCAD Pressure unit]"
   ShearModulusLongitudal:
     DisplayName: "Shear Modulus in the longitudal direction"
     Type: 'Quantity'
@@ -57,6 +69,12 @@ Model:
     Description: "Shear modulus in [FreeCAD Pressure unit]"
   YoungsModulusRadial:
     DisplayName: "Young's Modulus in the radial direction"
+    Type: 'Quantity'
+    Units: 'kPa'
+    URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
+    Description: "Young's modulus (or E-Module) in [FreeCAD Pressure unit]"
+  YoungsTangentialRadial:
+    DisplayName: "Young's Modulus in the tangential direction"
     Type: 'Quantity'
     Units: 'kPa'
     URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'

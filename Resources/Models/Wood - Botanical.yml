@@ -1,0 +1,58 @@
+---
+# ***************************************************************************
+# *                                                                         *
+# *   Copyright (c) 2025 David Carter <dcarter@davidcarter.ca>              *
+# *                                                                         *
+# *   This program is free software; you can redistribute it and/or modify  *
+# *   it under the terms of the GNU Lesser General Public License (LGPL)    *
+# *   as published by the Free Software Foundation; either version 2 of     *
+# *   the License, or (at your option) any later version.                   *
+# *   for detail see the LICENCE text file.                                 *
+# *                                                                         *
+# *   This program is distributed in the hope that it will be useful,       *
+# *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+# *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+# *   GNU Library General Public License for more details.                  *
+# *                                                                         *
+# *   You should have received a copy of the GNU Library General Public     *
+# *   License along with this program; if not, write to the Free Software   *
+# *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  *
+# *   USA                                                                   *
+# *                                                                         *
+# ***************************************************************************
+
+Model:
+  Name: 'Wood - Botanical'
+  UUID: '1273eaa6-8185-4130-8072-ff61132568d9'
+  Description: >
+    Various wood properties
+  Species:
+    Type: 'String'
+    Description: >
+      Scientific name
+  Species URL:
+    Type: 'URL'
+    Description: "Link to wikipedia.org for the species"
+  Wood Database:
+    Type: 'URL'
+    Description: "Link to wood-database.com"
+  Softwood:
+    Type: 'Boolean'
+    Units: ''
+    URL: ''
+    Description: "Softwood (Gymnosperm) or hardwood (angiosperm)"
+  Range:
+    Type: 'List'
+    Units: ''
+    URL: ''
+    Description: >
+      Where does it grow? List of countries, regions, continents, etc.
+  CITES Appendix:
+    Type: 'String'
+    Description: "I, II, III, or None"
+  IUCN Red List Category:
+    Type: 'String'
+    Description: "EX, EW, CR, EN, VU, NT, LC, DD, NE"
+  IUCN Red List URL:
+    Type: 'URL'
+    Description: "Link to iucnredlist.org for species"
