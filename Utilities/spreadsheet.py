@@ -56,35 +56,36 @@ COLUMN_SHRINK_RAD = 11 # L
 COLUMN_SHRINK_TAN = 12 # M
 COLUMN_SHRINK_VOL = 13 # N
 COLUMN_IMAGE = 14 # O
-COLUMN_ALT_NAMES = 15 # P
-COLUMN_TAGS = 16 # Q
-COLUMN_REF1 = 17 # R
-COLUMN_REF2 = 18 # S
-COLUMN_UUID = 19 # T
-COLUMN_UUID2 = 20 # U
-COLUMN_RANGE = 21 # V
-COLUMN_CITES = 22 # W
-COLUMN_IUCN_REDLIST = 23 # X
-COLUMN_IUCN_REDLIST_URL = 24 # Y
-COLUMN_MACH_CHIP_THICKNESS_EXPONENT = 25 # Z
-COLUMN_MACH_SURFACE_SPEED_CARBIDE = 26 # AA
-COLUMN_MACH_SURFACE_SPEED_HSS = 27 # AB
-COLUMN_MACH_UNIT_CUTTING_FORCE = 28 # AC
-COLUMN_MACH_MAX_LOAD = 29 # AD
-COLUMN_FLEX_MOD_TANG_LONG = 30 # AE
-COLUMN_FLEX_MOD_RAD_LONG = 31 # AF
-COLUMN_SHEAR_LONG_RAD = 32 # AG
-COLUMN_SHEAR_LONG_TANG = 33 # AH
-COLUMN_SHEAR_RAD_TANG = 34 # AI
-COLUMN_ULTIMATE_STRENGTH_LONG = 35 # AJ
-COLUMN_ULTIMATE_STRENGTH_CROSS = 36 # AK
-COLUMN_COMPRESS_STRENGTH_CROSS = 37 # AL
-COLUMN_SHEAR_LONG = 38 # AM
-COLUMN_POISSON_LONG_TANG = 39 # AN
-COLUMN_POISSON_RAD_TANG = 40 # AO
-COLUMN_POISSON_TANG_RAD = 41 # AP
-COLUMN_POISSON_TANG_LONG = 42 # AQ
-COLUMN_THERMAL_CONDUCTIVITY = 43 # AR
+COLUMN_SPECIES = 15 # P
+COLUMN_ALT_NAMES = 16 # Q
+COLUMN_TAGS = 17 # R
+COLUMN_REF1 = 18 # S
+COLUMN_REF2 = 19 # T
+COLUMN_UUID = 20 # U
+COLUMN_UUID2 = 21 # V
+COLUMN_RANGE = 22 # W
+COLUMN_CITES = 23 # X
+COLUMN_IUCN_REDLIST = 24 # Y
+COLUMN_IUCN_REDLIST_URL = 25 # Z
+COLUMN_MACH_CHIP_THICKNESS_EXPONENT = 26 # AA
+COLUMN_MACH_SURFACE_SPEED_CARBIDE = 27 # AB
+COLUMN_MACH_SURFACE_SPEED_HSS = 28 # AC
+COLUMN_MACH_UNIT_CUTTING_FORCE = 29 # AD
+COLUMN_MACH_MAX_LOAD = 30 # AE
+COLUMN_FLEX_MOD_TANG_LONG = 31 # AF
+COLUMN_FLEX_MOD_RAD_LONG = 32 # AG
+COLUMN_SHEAR_LONG_RAD = 33 # AH
+COLUMN_SHEAR_LONG_TANG = 34 # AI
+COLUMN_SHEAR_RAD_TANG = 35 # AJ
+COLUMN_ULTIMATE_STRENGTH_LONG = 36 # AK
+COLUMN_ULTIMATE_STRENGTH_CROSS = 37 # AL
+COLUMN_COMPRESS_STRENGTH_CROSS = 38 # AM
+COLUMN_SHEAR_LONG = 39 # AN
+COLUMN_POISSON_LONG_TANG = 40 # AO
+COLUMN_POISSON_RAD_TANG = 41 # AP
+COLUMN_POISSON_TANG_RAD = 42 # AQ
+COLUMN_POISSON_TANG_LONG = 43 # AR
+COLUMN_THERMAL_CONDUCTIVITY = 44 # As
 
 # Averaged values
 VrlBack = 0.056
@@ -148,6 +149,7 @@ def parseRow(row : tuple) -> dict:
     result["shrink_tan"] = row[COLUMN_SHRINK_TAN].value
     result["shrink_vol"] = row[COLUMN_SHRINK_VOL].value
     result["image"] = row[COLUMN_IMAGE].value
+    result["species"] = row[COLUMN_SPECIES].value
     result["alt"] = row[COLUMN_ALT_NAMES].value
     result["tags"] = row[COLUMN_TAGS].value
     result["ref1"] = parseURL(row[COLUMN_REF1])
@@ -185,15 +187,16 @@ def parseRow(row : tuple) -> dict:
 
 def getTags(row : dict) -> list:
     tags = []
-    names = row['alt'].split(',')
-    for name in names:
-        tag = name.strip().lower()
-        tags.append(tag)
-    if row['tags'] is not None:
-        names = row['tags'].split(',')
+    if row['alt']:
+        names = row['alt'].split(',')
         for name in names:
             tag = name.strip().lower()
             tags.append(tag)
+        if row['tags'] is not None:
+            names = row['tags'].split(',')
+            for name in names:
+                tag = name.strip().lower()
+                tags.append(tag)
     return tags
 
 def getRange(row : dict) -> list:
@@ -218,7 +221,7 @@ def createInherits(row : dict) -> str:
 def createBotanical(row : dict) -> str:
     yam =   "  Wood - Botanical:\n"
     yam +=  '    UUID: "1273eaa6-8185-4130-8072-ff61132568d9"\n'
-    # yam += f'    Species: "{row["species"]}"\n'
+    yam += f'    Species: "{row["species"].strip().title()}"\n'
     yam += f'    SpeciesURL: "{row["ref2"]}"\n'
     yam += f'    WoodDatabase: "{row["ref1"]}"\n'
     yam += f'    Softwood: "{row["softwood"]}"\n'
@@ -262,7 +265,24 @@ def createShrinkage(row : dict) -> str:
     yam += f'    ShrinkLong: "{shrinkLong * 100.0}"\n'
     return yam
 
-def createPhysical(row : dict) -> str:
+def createLinearElastic(row : dict) -> str:
+    yam =   '  LinearElastic:\n'
+    yam +=  '    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"\n'
+    yam += f'    Density: "{row["density"]} kg/m^3"\n'
+    # yam += f'    BulkModulus: "{row["density"]} kg/m^3"\n'
+    yam += f'    PoissonRatio: "{(row["flex_mod"] * 1000.0 / (2.0 * row["ShearLong"])) - 1.0}"\n'
+    yam += f'    ShearModulus: "{row["ShearLong"]} kPa"\n'
+    yam += f'    YoungsModulus: "{row["flex_mod"]} MPa"\n'
+    yam += f'    CompressiveStrength: "{row["compress"]} kPa"\n'
+    # yam += f'    FractureToughness: "{row["density"]} kg/m^3"\n'
+    # yam += f'    UltimateStrain: "{row["density"]} kg/m^3"\n'
+    yam += f'    UltimateTensileStrength: "{row["UltimateLong"]} kPa"\n'
+    # yam += f'    YieldStrength: "{row["density"]} kg/m^3"\n'
+    # yam += f'    Stiffness: "{row["density"]} kg/m^3"\n'
+
+    return yam
+
+def createWood(row : dict) -> str:
     yam =   '  Wood:\n'
     yam +=  '    UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"\n'
     # yam += f'    MoistureContent: "{row["density"]}"\n'
@@ -281,7 +301,7 @@ def createPhysical(row : dict) -> str:
     yam += f'    YoungsModulusRad: "{row["FlexModulusRadLong"] * row["flex_mod"]} MPa"\n'
     yam += f'    UltimateStrengthLong: "{row["UltimateLong"]} kPa"\n'
     yam += f'    UltimateStrengthCross: "{row["UltimateCross"]} kPa"\n'
-    # yam += f'    CompressiveStrengthLong: "{row["density"]} kPa"\n'
+    yam += f'    CompressiveStrengthLong: "{row["compress"]} kPa"\n'
     yam += f'    CompressiveStrengthCross: "{row["CompressCross"]} kPa"\n'
     yam += f'    ModulusOfRuptureLong: "{row["flex_strength"]} kPa"\n'
     return yam
@@ -332,7 +352,8 @@ def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool =
     yam += createBotanical(row)
     yam += createMachinability(row)
     yam += createShrinkage(row)
-    yam += createPhysical(row)
+    # yam += createLinearElastic(row) - produces bad results
+    yam += createWood(row)
     yam += createAppearance(base, diffuse)
 
     return yam

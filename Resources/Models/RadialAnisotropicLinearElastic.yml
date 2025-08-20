@@ -70,19 +70,19 @@ Model:
   ShearModulusLongRad:
     DisplayName: "Shear Modulus (Longitudinal->Radial)"
     Type: 'Quantity'
-    Units: 'MPa'
+    Units: 'kPa'
     URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
     Description: "Shear Modulus long to radial (cross-grain, perpendicular to grain)"
   ShearModulusLong:
     DisplayName: "Shear Modulus (Longitudinal)"
     Type: 'Quantity'
-    Units: 'MPa'
+    Units: 'kPa'
     URL: 'https://en.wikipedia.org/wiki/Shear_modulus'
     Description: "Shear, longitudinal, parallel to grain"
   YoungsModulusLong:
     DisplayName: "Youngs Modulus (Longitudinal)"
     Type: 'Quantity'
-    Units: 'kPa'
+    Units: 'MPa'
     URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
     Description: "Modulus of Elasticity longitudinal, parallel to grain"
   YoungsModulusRadLong:
