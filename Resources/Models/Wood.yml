@@ -44,3 +44,8 @@ Model:
     Type: 'Float'
     URL: "https://en.wikipedia.org/wiki/Wood#Water_content"
     Description: "Dryness at which the propeties were measured."
+  WorkToMaximumLoad:
+    DisplayName: "Work to Maximum Load"
+    Type: 'Quantity'
+    Units: 'kJ/m^3'
+    Description: "Work to Maximum Load (WML)."

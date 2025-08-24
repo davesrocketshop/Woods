@@ -1,6 +1,6 @@
 # File created by the Woods workbench
 General:
-  UUID: "4181060c-78e6-4be3-8100-ef277a3e6b72"
+  UUID: "2bab443f-e72d-4c3b-b403-727d3235beea"
   Name: "Sitka Spruce"
   Author: "Gregory Holmberg"
   License: "CDLA-Sharing-1.0"
@@ -16,28 +16,24 @@ Models:
     UUID: "1273eaa6-8185-4130-8072-ff61132568d9"
     Species: "Picea Sitchensis"
     SpeciesURL: "https://en.wikipedia.org/wiki/Picea_sitchensis"
-    WoodDatabase: "https://www.wood-database.com/sitka-spruce"
+    WoodDatabase: "https://www.wood-database.com/sitka-spruce/"
     Softwood: "True"
     Range:
       - "NA-NW"
     IUCNRedList: "LC"
     IUCNRedListURL: "https://www.iucnredlist.org/species/42337/2973701"
-  Machinability:
-    UUID: "9d81fcb2-bf81-48e3-bb57-d45ecf380096"
-    SurfaceSpeedHSS: "600000 mm/min"
-    SurfaceSpeedCarbide: "600000 mm/min"
-    UnitCuttingForce: "36900 N/mm^2"
-    ChipThicknessExponent: "0.5"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "4.3"
     ShrinkTangential: "7.5"
     ShrinkVolume: "11.5"
     ShrinkLong: "0.025417266796579074"
+  Sound:
+    UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
+    SoundRadiationCoefficient: "12.0 m^4/kg/s"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
-    SteamBendable: "0.0"
-    Density: "449 kg/m^3"
+    Density: "425 kg/m^3"
     PoissonRatioLongRad: "0.372"
     PoissonRatioLongTan: "0.467"
     PoissonRatioRadTan: "0.435"
@@ -45,15 +41,16 @@ Models:
     PoissonRatioRadLong: "0.04"
     PoissonRatioTanLong: "0.025"
     ShearModulusLongRad: "0.064 MPa"
-    ShearModulusLong: "7930 kPa"
-    YoungsModulusLong: "10800 MPa"
+    ShearModulusLong: "7900 kPa"
+    YoungsModulusLong: "11030 MPa"
     YoungsModulusRadLong: "0.078"
-    YoungsModulusRad: "842.4 MPa"
+    YoungsModulusRad: "860.34 MPa"
     UltimateStrengthLong: "59300 kPa"
     UltimateStrengthCross: "2600 kPa"
-    CompressiveStrengthLong: "38700 kPa"
+    CompressiveStrengthLong: "38200 kPa"
     CompressiveStrengthCross: "4000 kPa"
-    ModulusOfRuptureLong: "70300 kPa"
+    ModulusOfRuptureLong: "70000 kPa"
+    WorkToMaximumLoad: "65 kJ/m^3"
 AppearanceModels:
   Texture Rendering:
     UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"

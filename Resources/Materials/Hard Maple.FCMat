@@ -1,6 +1,6 @@
 # File created by the Woods workbench
 General:
-  UUID: "630a973c-db08-41e5-84ce-1a3dafda7007"
+  UUID: "cdd7a1a6-58a2-4412-8a09-97f00c8bd597"
   Name: "Hard Maple"
   Author: "Gregory Holmberg"
   License: "CDLA-Sharing-1.0"
@@ -19,24 +19,21 @@ Models:
     UUID: "1273eaa6-8185-4130-8072-ff61132568d9"
     Species: "Acer Saccharum"
     SpeciesURL: "https://en.wikipedia.org/wiki/Acer_saccharum"
-    WoodDatabase: "https://www.wood-database.com/hard-maple"
+    WoodDatabase: "https://www.wood-database.com/hard-maple/"
     Softwood: "False"
     Range:
       - "NA-NE"
     IUCNRedList: "LC"
     IUCNRedListURL: "https://www.iucnredlist.org/species/193863/2287314"
-  Machinability:
-    UUID: "9d81fcb2-bf81-48e3-bb57-d45ecf380096"
-    SurfaceSpeedHSS: "600000 mm/min"
-    SurfaceSpeedCarbide: "600000 mm/min"
-    UnitCuttingForce: "52500 N/mm^2"
-    ChipThicknessExponent: "0.5"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "4.8"
     ShrinkTangential: "9.9"
     ShrinkVolume: "14.7"
     ShrinkLong: "0.5540062861992712"
+  Sound:
+    UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
+    SoundRadiationCoefficient: "6.0 m^4/kg/s"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     SteamBendable: "56.99999999999999"
@@ -48,15 +45,15 @@ Models:
     PoissonRatioRadLong: "0.065"
     PoissonRatioTanLong: "0.037"
     ShearModulusLongRad: "0.111 MPa"
-    ShearModulusLong: "16065 kPa"
-    YoungsModulusLong: "12618 MPa"
+    ShearModulusLong: "16100 kPa"
+    YoungsModulusLong: "12620 MPa"
     YoungsModulusRadLong: "0.132"
-    YoungsModulusRad: "1665.576 MPa"
+    YoungsModulusRad: "1665.8400000000001 MPa"
     UltimateStrengthLong: "108200 kPa"
-    UltimateStrengthCross: "2600 kPa"
-    CompressiveStrengthLong: "53988 kPa"
-    CompressiveStrengthCross: "10136 kPa"
-    ModulusOfRuptureLong: "108941 kPa"
+    CompressiveStrengthLong: "54000 kPa"
+    CompressiveStrengthCross: "10100 kPa"
+    ModulusOfRuptureLong: "109000 kPa"
+    WorkToMaximumLoad: "114 kJ/m^3"
 AppearanceModels:
   Texture Rendering:
     UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"
