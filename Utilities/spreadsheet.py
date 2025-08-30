@@ -107,6 +107,8 @@ def parseSteam(cell) -> str | None:
 
 def parseBool(cell) -> bool:
     value = cell.value
+    if isinstance(value, bool):
+        return value
     if value.lower() in ["true", "=true()",  "1"]:
         return True
     return False
@@ -252,6 +254,16 @@ def createMachinability(row : dict) -> str:
     else:
         return ""
 
+def createHardness(row : dict) -> str:
+    if row["hardness"]:
+        yam =   '  Hardness:\n'
+        yam +=  '    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"\n'
+        yam += f'    Hardness: "{row["hardness"]}"\n'
+        yam += f'    HardnessUnits: "N"\n'
+        return yam
+    else:
+        return ""
+
 def createShrinkage(row : dict) -> str:
     yam =   '  Wood - Shrinkage:\n'
     yam +=  '    UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"\n'
@@ -269,6 +281,15 @@ def createShrinkage(row : dict) -> str:
         yam += f'    ShrinkLong: "{shrinkLong * 100.0}"\n'
     return yam
 
+def createThermal(row : dict) -> str:
+    if row["ThermalConductivity"]:
+        yam =   '  Thermal:\n'
+        yam +=  '    UUID: "9959d007-a970-4ea7-bae4-3eb1b8b883c7"\n'
+        yam += f'    ThermalConductivity: "{row["ThermalConductivity"]} W/m/K"\n'
+        return yam
+    else:
+        return ""
+
 def createSound(row : dict) -> str:
     density = row["density"]
     young = row["flex_mod"]
@@ -284,16 +305,19 @@ def createLinearElastic(row : dict) -> str:
     yam =   '  LinearElastic:\n'
     yam +=  '    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"\n'
     yam += f'    Density: "{row["density"]} kg/m^3"\n'
-    # yam += f'    BulkModulus: "{row["density"]} kg/m^3"\n'
-    yam += f'    PoissonRatio: "{(row["flex_mod"] * 1000.0 / (2.0 * row["ShearLong"])) - 1.0}"\n'
-    yam += f'    ShearModulus: "{row["ShearLong"]} kPa"\n'
-    yam += f'    YoungsModulus: "{row["flex_mod"]} MPa"\n'
-    yam += f'    CompressiveStrength: "{row["compress"]} kPa"\n'
-    # yam += f'    FractureToughness: "{row["density"]} kg/m^3"\n'
-    # yam += f'    UltimateStrain: "{row["density"]} kg/m^3"\n'
-    yam += f'    UltimateTensileStrength: "{row["UltimateLong"]} kPa"\n'
-    # yam += f'    YieldStrength: "{row["density"]} kg/m^3"\n'
-    # yam += f'    Stiffness: "{row["density"]} kg/m^3"\n'
+
+    # This produces inconsistent results
+    # if row["flex_mod"] and row["ShearLong"]:
+    #     yam += f'    PoissonRatio: "{(row["flex_mod"] * 1000.0 / (2.0 * row["ShearLong"])) - 1.0:.3f}"\n'
+
+    if row["ShearLong"]:
+        yam += f'    ShearModulus: "{row["ShearLong"]} kPa"\n'
+    if row["flex_mod"]:
+        yam += f'    YoungsModulus: "{row["flex_mod"]} MPa"\n'
+    if row["compress"]:
+        yam += f'    CompressiveStrength: "{row["compress"]} kPa"\n'
+    if row["UltimateLong"]:
+        yam += f'    UltimateTensileStrength: "{row["UltimateLong"]} kPa"\n'
 
     return yam
 
@@ -316,16 +340,20 @@ def createWood(row : dict) -> str:
         yam += f'    PoissonRatioRadLong: "{row["PoissonRadLong"]}"\n'
     if row["PoissonTangLong"]:
         yam += f'    PoissonRatioTanLong: "{row["PoissonTangLong"]}"\n'
-    if row["ShearLongRad"]:
-        yam += f'    ShearModulusLongRad: "{row["ShearLongRad"]} MPa"\n'
     if row["ShearLong"]:
         yam += f'    ShearModulusLong: "{row["ShearLong"]} kPa"\n'
+    if row["ShearLongRad"] and row["flex_mod"]:
+        yam += f'    ShearModulusLongRad: "{row["ShearLongRad"] * row["flex_mod"]:.2f} MPa"\n'
+    if row["ShearLongTang"] and row["flex_mod"]:
+        yam += f'    ShearModulusLongTan: "{row["ShearLongTang"] * row["flex_mod"]:.2f} MPa"\n'
+    if row["ShearRadTang"] and row["flex_mod"]:
+        yam += f'    ShearModulusRadTan: "{row["ShearRadTang"] * row["flex_mod"]:.2f} MPa"\n'
     if row["flex_mod"]:
         yam += f'    YoungsModulusLong: "{row["flex_mod"]} MPa"\n'
-    if row["FlexModulusRadLong"]:
-        yam += f'    YoungsModulusRadLong: "{row["FlexModulusRadLong"]}"\n'
+    if row["FlexModulusTangLong"] and row["flex_mod"]:
+        yam += f'    YoungsModulusTanLong: "{row["FlexModulusTangLong"] * row["flex_mod"]:.2f} MPa"\n'
     if row["FlexModulusRadLong"] and row["flex_mod"]:
-        yam += f'    YoungsModulusRad: "{row["FlexModulusRadLong"] * row["flex_mod"]} MPa"\n'
+        yam += f'    YoungsModulusRadLong: "{row["FlexModulusRadLong"] * row["flex_mod"]:.2f} MPa"\n'
     if row["UltimateLong"]:
         yam += f'    UltimateStrengthLong: "{row["UltimateLong"]} kPa"\n'
     if row["UltimateCross"]:
@@ -385,9 +413,11 @@ def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool =
     yam += 'Models:\n'
     yam += createBotanical(row)
     # yam += createMachinability(row)
+    yam += createHardness(row)
     yam += createShrinkage(row)
+    yam += createThermal(row)
     yam += createSound(row)
-    # yam += createLinearElastic(row) - produces bad results
+    yam += createLinearElastic(row) #- produces bad results for poisson ratio
     yam += createWood(row)
     yam += createAppearance(base, diffuse)
 

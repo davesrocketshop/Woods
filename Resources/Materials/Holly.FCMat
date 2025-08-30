@@ -24,6 +24,10 @@ Models:
       - "US-E"
     IUCNRedList: "LC"
     IUCNRedListURL: "https://www.iucnredlist.org/species/20680285/20694821"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "4537"
+    HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "4.8"
@@ -33,12 +37,21 @@ Models:
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
     SoundRadiationCoefficient: "5.4 m^4/kg/s"
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "641 kg/m^3"
+    ShearModulus: "11790 kPa"
+    YoungsModulus: "7653 MPa"
+    CompressiveStrength: "38198 kPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
-    Density: "640 kg/m^3"
-    YoungsModulusLong: "7660 MPa"
-    CompressiveStrengthLong: "38200 kPa"
-    ModulusOfRuptureLong: "71000 kPa"
+    Density: "641 kg/m^3"
+    ShearModulusLong: "11790 kPa"
+    YoungsModulusLong: "7653 MPa"
+    CompressiveStrengthLong: "38198 kPa"
+    CompressiveStrengthCross: "7791 kPa"
+    ModulusOfRuptureLong: "71019 kPa"
+    WorkToMaximumLoad: "74 kJ/m^3"
 AppearanceModels:
   Texture Rendering:
     UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"

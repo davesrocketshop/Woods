@@ -25,21 +25,33 @@ Models:
       - "NA-E"
     IUCNRedList: "LC"
     IUCNRedListURL: "https://www.iucnredlist.org/species/42257/2967510"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "4000"
+    HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "3.1"
     ShrinkTangential: "4.7"
     ShrinkVolume: "7.8"
     ShrinkLong: "0.15777670210956884"
+  Thermal:
+    UUID: "9959d007-a970-4ea7-bae4-3eb1b8b883c7"
+    ThermalConductivity: "0.14 W/m/K"
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
     SoundRadiationCoefficient: "6.4 m^4/kg/s"
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "529 kg/m^3"
+    YoungsModulus: "6070 MPa"
+    CompressiveStrength: "41500 kPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
-    Density: "530 kg/m^3"
+    Density: "529 kg/m^3"
     YoungsModulusLong: "6070 MPa"
     CompressiveStrengthLong: "41500 kPa"
-    CompressiveStrengthCross: "6300 kPa"
+    CompressiveStrengthCross: "6340 kPa"
     ModulusOfRuptureLong: "60700 kPa"
     WorkToMaximumLoad: "57 kJ/m^3"
 AppearanceModels:

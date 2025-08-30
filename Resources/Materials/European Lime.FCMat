@@ -18,13 +18,17 @@ Models:
   Wood - Botanical:
     UUID: "1273eaa6-8185-4130-8072-ff61132568d9"
     Species: "Tilia X Europaea"
-    SpeciesURL: "https://en.wikipedia.org/wiki/Tilia_×_europaea"
+    SpeciesURL: "https://en.wikipedia.org/wiki/Tilia_%C3%97_europaea"
     WoodDatabase: "https://www.wood-database.com/european-lime/"
     Softwood: "False"
     Range:
       - "EU"
     IUCNRedList: "LC"
     IUCNRedListURL: "https://www.iucnredlist.org/species/203360/68079373"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "3100"
+    HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "5.0"
@@ -34,6 +38,11 @@ Models:
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
     SoundRadiationCoefficient: "8.7 m^4/kg/s"
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "535 kg/m^3"
+    YoungsModulus: "11710 MPa"
+    CompressiveStrength: "44800 kPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     Density: "535 kg/m^3"

@@ -22,16 +22,23 @@ Models:
       - "NA-E"
     IUCNRedList: "LC"
     IUCNRedListURL: "https://www.iucnredlist.org/species/193849/2285894"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "3430"
+    HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "3.2"
     ShrinkTangential: "8.6"
     ShrinkVolume: "12.3"
     ShrinkLong: "0.876177731160821"
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "513 kg/m^3"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     SteamBendable: "59.0"
-    Density: "515 kg/m^3"
+    Density: "513 kg/m^3"
 AppearanceModels:
   Texture Rendering:
     UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"

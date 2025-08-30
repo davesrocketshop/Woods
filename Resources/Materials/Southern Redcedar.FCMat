@@ -14,7 +14,7 @@ Inherits:
 Models:
   Wood - Botanical:
     UUID: "1273eaa6-8185-4130-8072-ff61132568d9"
-    Species: "Juniperus Virginiana"
+    Species: "Juniperus Silicicola"
     SpeciesURL: "https://en.wikipedia.org/wiki/Juniperus_virginiana"
     WoodDatabase: "https://www.wood-database.com/southern-redcedar/"
     Softwood: "True"
@@ -22,6 +22,10 @@ Models:
       - "US-SE"
     IUCNRedList: "LC"
     IUCNRedListURL: "https://www.iucnredlist.org/species/42257/2967510"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "2710"
+    HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "2.1999999999999997"
@@ -30,13 +34,22 @@ Models:
     ShrinkLong: "0.945807770961149"
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
-    SoundRadiationCoefficient: "7.9 m^4/kg/s"
+    SoundRadiationCoefficient: "8.1 m^4/kg/s"
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "497 kg/m^3"
+    ShearModulus: "5170 kPa"
+    YoungsModulus: "8070 MPa"
+    CompressiveStrength: "45300 kPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
-    Density: "505 kg/m^3"
+    Density: "497 kg/m^3"
+    ShearModulusLong: "5170 kPa"
     YoungsModulusLong: "8070 MPa"
     CompressiveStrengthLong: "45300 kPa"
+    CompressiveStrengthCross: "6890 kPa"
     ModulusOfRuptureLong: "64800 kPa"
+    WorkToMaximumLoad: "37 kJ/m^3"
 AppearanceModels:
   Texture Rendering:
     UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"

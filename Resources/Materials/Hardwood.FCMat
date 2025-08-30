@@ -48,7 +48,6 @@ Models:
     ShearModulusLongRad: "1168 MPa"
     ShearModulusLong: "16100 kPa"
     YoungsModulusLong: "12700 MPa"
-    YoungsModulusRadLong: "0.118"
-    YoungsModulusRad: "1499 MPa"
+    YoungsModulusRadLong: "1499 MPa"
     CompressiveStrengthLong: "56000 kPa"
     CompressiveStrengthCross: "10100 kPa"

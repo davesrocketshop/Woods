@@ -22,25 +22,38 @@ Models:
       - "US-NE"
     IUCNRedList: "LC"
     IUCNRedListURL: "https://www.iucnredlist.org/species/193862/2287256"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "3114"
+    HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "3.0"
     ShrinkTangential: "7.199999999999999"
     ShrinkVolume: "12.0"
     ShrinkLong: "2.2396018485602687"
+  Thermal:
+    UUID: "9959d007-a970-4ea7-bae4-3eb1b8b883c7"
+    ThermalConductivity: "0.14 W/m/K"
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
     SoundRadiationCoefficient: "7.3 m^4/kg/s"
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "529 kg/m^3"
+    ShearModulus: "10204 kPa"
+    YoungsModulus: "7860 MPa"
+    CompressiveStrength: "35992 kPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     SteamBendable: "59.0"
-    Density: "530 kg/m^3"
-    ShearModulusLong: "10200 kPa"
+    Density: "529 kg/m^3"
+    ShearModulusLong: "10204 kPa"
     YoungsModulusLong: "7860 MPa"
     UltimateStrengthCross: "3400 kPa"
-    CompressiveStrengthLong: "36000 kPa"
-    CompressiveStrengthCross: "5100 kPa"
-    ModulusOfRuptureLong: "61400 kPa"
+    CompressiveStrengthLong: "35992 kPa"
+    CompressiveStrengthCross: "5102 kPa"
+    ModulusOfRuptureLong: "61366 kPa"
     WorkToMaximumLoad: "57 kJ/m^3"
 AppearanceModels:
   Texture Rendering:

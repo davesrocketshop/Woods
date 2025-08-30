@@ -25,6 +25,10 @@ Models:
       - "MM IN"
     IUCNRedList: "EN"
     IUCNRedListURL: "https://www.iucnredlist.org/species/62019830/62019832"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "4740"
+    HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "2.6"
@@ -34,6 +38,12 @@ Models:
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
     SoundRadiationCoefficient: "6.6 m^4/kg/s"
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "655 kg/m^3"
+    ShearModulus: "13000 kPa"
+    YoungsModulus: "12280 MPa"
+    CompressiveStrength: "54800 kPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     Density: "655 kg/m^3"

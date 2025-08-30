@@ -27,6 +27,10 @@ Models:
     CITESAppendix: "II"
     IUCNRedList: "VU"
     IUCNRedListURL: "https://www.iucnredlist.org/species/33048/2831968"
+  Hardness:
+    UUID: "3d1a6141-d032-4d82-8bb5-a8f339fff8ad"
+    Hardness: "13700"
+    HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
     ShrinkRadial: "8.3"
@@ -36,6 +40,11 @@ Models:
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
     SoundRadiationCoefficient: "4.4 m^4/kg/s"
+  LinearElastic:
+    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
+    Density: "955 kg/m^3"
+    YoungsModulus: "16890 MPa"
+    CompressiveStrength: "76300 kPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     SteamBendable: "1.0"
