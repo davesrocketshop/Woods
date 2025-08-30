@@ -271,14 +271,14 @@ def createShrinkage(row : dict) -> str:
     shrinkTangential = row["shrink_tan"]
     shrinkVolume = row["shrink_vol"]
     if shrinkRadial:
-        yam += f'    ShrinkRadial: "{shrinkRadial * 100.0}"\n'
+        yam += f'    ShrinkRadial: "{shrinkRadial * 100.0:.2f}"\n'
     if shrinkTangential:
-        yam += f'    ShrinkTangential: "{shrinkTangential * 100.0}"\n'
+        yam += f'    ShrinkTangential: "{shrinkTangential * 100.0:.2f}"\n'
     if shrinkVolume:
-        yam += f'    ShrinkVolume: "{shrinkVolume * 100.0}"\n'
+        yam += f'    ShrinkVolume: "{shrinkVolume * 100.0:.2f}"\n'
     if shrinkRadial and shrinkTangential and shrinkVolume:
         shrinkLong = max(1 - (1 - shrinkVolume)/((1 - shrinkRadial)*(1 - shrinkTangential)), 0)
-        yam += f'    ShrinkLong: "{shrinkLong * 100.0}"\n'
+        yam += f'    ShrinkLong: "{shrinkLong * 100.0:.2f}"\n'
     return yam
 
 def createThermal(row : dict) -> str:
@@ -326,22 +326,22 @@ def createWood(row : dict) -> str:
     yam +=  '    UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"\n'
     # yam += f'    MoistureContent: "{row["density"]}"\n'
     if row["steam"]:
-        yam += f'    SteamBendable: "{row["steam"] * 100.0}"\n'
+        yam += f'    SteamBendable: "{row["steam"] * 100.0:.1f}"\n'
     yam += f'    Density: "{row["density"]} kg/m^3"\n'
     if row["PoissonLongRad"]:
-        yam += f'    PoissonRatioLongRad: "{row["PoissonLongRad"]}"\n'
+        yam += f'    PoissonRatioLongRad: "{row["PoissonLongRad"]:.3f}"\n'
     if row["PoissonLongTang"]:
-        yam += f'    PoissonRatioLongTan: "{row["PoissonLongTang"]}"\n'
+        yam += f'    PoissonRatioLongTan: "{row["PoissonLongTang"]:.3f}"\n'
     if row["PoissonRadTang"]:
-        yam += f'    PoissonRatioRadTan: "{row["PoissonRadTang"]}"\n'
+        yam += f'    PoissonRatioRadTan: "{row["PoissonRadTang"]:.3f}"\n'
     if row["PoissonTangRad"]:
-        yam += f'    PoissonRatioTanRad: "{row["PoissonTangRad"]}"\n'
+        yam += f'    PoissonRatioTanRad: "{row["PoissonTangRad"]:.3f}"\n'
     if row["PoissonRadLong"]:
-        yam += f'    PoissonRatioRadLong: "{row["PoissonRadLong"]}"\n'
+        yam += f'    PoissonRatioRadLong: "{row["PoissonRadLong"]:.3f}"\n'
     if row["PoissonTangLong"]:
-        yam += f'    PoissonRatioTanLong: "{row["PoissonTangLong"]}"\n'
+        yam += f'    PoissonRatioTanLong: "{row["PoissonTangLong"]:.3f}"\n'
     if row["ShearLong"]:
-        yam += f'    ShearStrengthLong: "{row["ShearLong"]} kPa"\n'
+        yam += f'    ShearStrengthLong: "{row["ShearLong"]:.2f} kPa"\n'
     if row["ShearLongRad"] and row["flex_mod"]:
         yam += f'    ShearModulusLongRad: "{row["ShearLongRad"] * row["flex_mod"]:.2f} MPa"\n'
     if row["ShearLongTang"] and row["flex_mod"]:
@@ -349,23 +349,26 @@ def createWood(row : dict) -> str:
     if row["ShearRadTang"] and row["flex_mod"]:
         yam += f'    ShearModulusRadTan: "{row["ShearRadTang"] * row["flex_mod"]:.2f} MPa"\n'
     if row["flex_mod"]:
-        yam += f'    YoungsModulusLong: "{row["flex_mod"]} MPa"\n'
+        yam += f'    YoungsModulus: "{row["flex_mod"]:.2f} MPa"\n'
+        yam += f'    YoungsModulusLong: "{row["flex_mod"]:.2f} MPa"\n'
     if row["FlexModulusTangLong"] and row["flex_mod"]:
         yam += f'    YoungsModulusTanLong: "{row["FlexModulusTangLong"] * row["flex_mod"]:.2f} MPa"\n'
     if row["FlexModulusRadLong"] and row["flex_mod"]:
         yam += f'    YoungsModulusRadLong: "{row["FlexModulusRadLong"] * row["flex_mod"]:.2f} MPa"\n'
     if row["UltimateLong"]:
-        yam += f'    UltimateStrengthLong: "{row["UltimateLong"]} kPa"\n'
+        yam += f'    UltimateTensileStrength: "{row["UltimateLong"]:.2f} kPa"\n'
+        yam += f'    UltimateStrengthLong: "{row["UltimateLong"]:.2f} kPa"\n'
     if row["UltimateCross"]:
-        yam += f'    UltimateStrengthCross: "{row["UltimateCross"]} kPa"\n'
+        yam += f'    UltimateStrengthCross: "{row["UltimateCross"]:.2f} kPa"\n'
     if row["compress"]:
-        yam += f'    CompressiveStrengthLong: "{row["compress"]} kPa"\n'
+        yam += f'    CompressiveStrength: "{row["compress"]:.2f} kPa"\n'
+        yam += f'    CompressiveStrengthLong: "{row["compress"]:.2f} kPa"\n'
     if row["CompressCross"]:
-        yam += f'    CompressiveStrengthCross: "{row["CompressCross"]} kPa"\n'
+        yam += f'    CompressiveStrengthCross: "{row["CompressCross"]:.2f} kPa"\n'
     if row["flex_strength"]:
-        yam += f'    ModulusOfRuptureLong: "{row["flex_strength"]} kPa"\n'
+        yam += f'    ModulusOfRuptureLong: "{row["flex_strength"]:.2f} kPa"\n'
     if row["MaxLoad"]:
-        yam += f'    WorkToMaximumLoad: "{row["MaxLoad"]} kJ/m^3"\n'
+        yam += f'    WorkToMaximumLoad: "{row["MaxLoad"]:.2f} kJ/m^3"\n'
     return yam
 
 def createAppearance(base : str | None, diffuse : tuple) ->str:
@@ -417,7 +420,7 @@ def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool =
     yam += createShrinkage(row)
     yam += createThermal(row)
     yam += createSound(row)
-    yam += createLinearElastic(row) #- produces bad results for poisson ratio
+    # yam += createLinearElastic(row) #- produces bad results for poisson ratio
     yam += createWood(row)
     yam += createAppearance(base, diffuse)
 

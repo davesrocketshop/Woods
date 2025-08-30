@@ -31,6 +31,8 @@ Model:
       UUID: '454661e5-265b-4320-8e6f-fcf6223ac3af'
     - RadialAnisotropicLinearElastic:
       UUID: '38e548e1-fa33-4551-b4b6-9901546f1d8b'
+    - 'Isotropic Linear Elastic':
+      UUID: 'f6f9e48c-b116-4e82-ad7f-3659a9219c50'
   SteamBendable:
     DisplayName: "Steam Bendable"
     Type: 'Float'

@@ -99,12 +99,14 @@ Model:
     Description: "Modulus of Elasticity longitudinal, parallel to grain"
   YoungsModulusTanLong:
     DisplayName: "Youngs Modulus (Tangential/Longitudinal)"
-    Type: 'Float'
+    Type: 'Quantity'
+    Units: 'MPa'
     URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
     Description: "Young's modulus tangential/longitudal"
   YoungsModulusRadLong:
     DisplayName: "Youngs Modulus (Radial/Longitudinal)"
-    Type: 'Float'
+    Type: 'Quantity'
+    Units: 'MPa'
     URL: 'https://en.wikipedia.org/wiki/Young%27s_modulus'
     Description: "Young's modulus radial/longitudal"
   UltimateStrengthLong:

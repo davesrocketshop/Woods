@@ -31,22 +31,19 @@ Models:
     HardnessUnits: "N"
   Wood - Shrinkage:
     UUID: "ec84f5bb-99cf-448a-86a5-cac2ebcab31c"
-    ShrinkRadial: "3.2"
-    ShrinkTangential: "5.2"
-    ShrinkVolume: "8.4"
-    ShrinkLong: "0.1813299857028161"
+    ShrinkRadial: "3.20"
+    ShrinkTangential: "5.20"
+    ShrinkVolume: "8.40"
+    ShrinkLong: "0.18"
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
     SoundRadiationCoefficient: "10.2 m^4/kg/s"
-  LinearElastic:
-    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
-    Density: "440 kg/m^3"
-    YoungsModulus: "8900 MPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     Density: "440 kg/m^3"
-    YoungsModulusLong: "8900 MPa"
-    ModulusOfRuptureLong: "65000 kPa"
+    YoungsModulus: "8900.00 MPa"
+    YoungsModulusLong: "8900.00 MPa"
+    ModulusOfRuptureLong: "65000.00 kPa"
 AppearanceModels:
   Texture Rendering:
     UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"

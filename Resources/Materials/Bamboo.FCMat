@@ -29,17 +29,14 @@ Models:
   Sound:
     UUID: "6b7f44ab-e48d-4568-98aa-1d88a8b6e57d"
     SoundRadiationCoefficient: "5.6 m^4/kg/s"
-  LinearElastic:
-    UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
-    Density: "850 kg/m^3"
-    YoungsModulus: "19000 MPa"
-    CompressiveStrength: "78000 kPa"
   Wood:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     Density: "850 kg/m^3"
-    YoungsModulusLong: "19000 MPa"
-    CompressiveStrengthLong: "78000 kPa"
-    ModulusOfRuptureLong: "122000 kPa"
+    YoungsModulus: "19000.00 MPa"
+    YoungsModulusLong: "19000.00 MPa"
+    CompressiveStrength: "78000.00 kPa"
+    CompressiveStrengthLong: "78000.00 kPa"
+    ModulusOfRuptureLong: "122000.00 kPa"
 AppearanceModels:
   Texture Rendering:
     UUID: "bbdcc65b-67ca-489c-bd5c-a36e33d1c160"
