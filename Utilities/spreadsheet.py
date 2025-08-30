@@ -310,8 +310,8 @@ def createLinearElastic(row : dict) -> str:
     # if row["flex_mod"] and row["ShearLong"]:
     #     yam += f'    PoissonRatio: "{(row["flex_mod"] * 1000.0 / (2.0 * row["ShearLong"])) - 1.0:.3f}"\n'
 
-    if row["ShearLong"]:
-        yam += f'    ShearModulus: "{row["ShearLong"]} kPa"\n'
+    # if row["ShearLong"]:
+    #     yam += f'    ShearModulus: "{row["ShearLong"]} kPa"\n'
     if row["flex_mod"]:
         yam += f'    YoungsModulus: "{row["flex_mod"]} MPa"\n'
     if row["compress"]:
@@ -341,7 +341,7 @@ def createWood(row : dict) -> str:
     if row["PoissonTangLong"]:
         yam += f'    PoissonRatioTanLong: "{row["PoissonTangLong"]}"\n'
     if row["ShearLong"]:
-        yam += f'    ShearModulusLong: "{row["ShearLong"]} kPa"\n'
+        yam += f'    ShearStrengthLong: "{row["ShearLong"]} kPa"\n'
     if row["ShearLongRad"] and row["flex_mod"]:
         yam += f'    ShearModulusLongRad: "{row["ShearLongRad"] * row["flex_mod"]:.2f} MPa"\n'
     if row["ShearLongTang"] and row["flex_mod"]:

@@ -41,7 +41,6 @@ Models:
   LinearElastic:
     UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
     Density: "449 kg/m^3"
-    ShearModulus: "7930 kPa"
     YoungsModulus: "10800 MPa"
     CompressiveStrength: "38700 kPa"
     UltimateTensileStrength: "59300 kPa"
@@ -54,7 +53,7 @@ Models:
     PoissonRatioTanRad: "0.245"
     PoissonRatioRadLong: "0.04"
     PoissonRatioTanLong: "0.025"
-    ShearModulusLong: "7930 kPa"
+    ShearStrengthLong: "7930 kPa"
     ShearModulusLongRad: "691.20 MPa"
     ShearModulusLongTan: "658.80 MPa"
     ShearModulusRadTan: "32.40 MPa"

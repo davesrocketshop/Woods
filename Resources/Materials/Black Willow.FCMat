@@ -38,7 +38,6 @@ Models:
   LinearElastic:
     UUID: "7b561d1d-fb9b-44f6-9da9-56a4f74d7536"
     Density: "417 kg/m^3"
-    ShearModulus: "8620 kPa"
     YoungsModulus: "6960 MPa"
     CompressiveStrength: "28300 kPa"
     UltimateTensileStrength: "73100 kPa"
@@ -46,7 +45,7 @@ Models:
     UUID: "901459aa-fd5e-43b8-aad6-71578f76c3f6"
     SteamBendable: "73.0"
     Density: "417 kg/m^3"
-    ShearModulusLong: "8620 kPa"
+    ShearStrengthLong: "8620 kPa"
     YoungsModulusLong: "6960 MPa"
     UltimateStrengthLong: "73100 kPa"
     CompressiveStrengthLong: "28300 kPa"
