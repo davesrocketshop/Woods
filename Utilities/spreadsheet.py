@@ -187,7 +187,7 @@ def getTags(row : dict) -> list:
         names = row['alt'].split(',')
         for name in names:
             tag = name.strip().lower()
-            tags.append(tag)
+            tags.append(tag.capitalize())
     # if row['tags'] is not None:
     #     names = row['tags'].split(',')
     #     for name in names:

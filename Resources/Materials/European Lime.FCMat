@@ -7,8 +7,8 @@ General:
   SourceURL: "https://research.fs.usda.gov/treesearch/62200"
   ReferenceSource: "USDA FPL Wood Handbook 2021"
   Tags:
-    - "common lime"
-    - "common linden"
+    - "Common lime"
+    - "Common linden"
   Description: >-2
     Automatically created by the Woods workbench.
 Inherits:
@@ -18,7 +18,7 @@ Models:
   Wood - Botanical:
     UUID: "1273eaa6-8185-4130-8072-ff61132568d9"
     Species: "Tilia X Europaea"
-    SpeciesURL: "https://en.wikipedia.org/wiki/Tilia_%C3%97_europaea"
+    SpeciesURL: "https://en.wikipedia.org/wiki/Tilia_×_europaea"
     WoodDatabase: "https://www.wood-database.com/european-lime/"
     Softwood: "False"
     Range:

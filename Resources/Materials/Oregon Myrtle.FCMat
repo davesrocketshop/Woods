@@ -7,9 +7,9 @@ General:
   SourceURL: "https://research.fs.usda.gov/treesearch/62200"
   ReferenceSource: "USDA FPL Wood Handbook 2021"
   Tags:
-    - "california bay laurel"
-    - "pepperwood"
-    - "myrtlewood"
+    - "California bay laurel"
+    - "Pepperwood"
+    - "Myrtlewood"
   Description: >-2
     Automatically created by the Woods workbench.
 Inherits:

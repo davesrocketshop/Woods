@@ -7,10 +7,10 @@ General:
   SourceURL: "https://research.fs.usda.gov/treesearch/62200"
   ReferenceSource: "USDA FPL Wood Handbook 2021"
   Tags:
-    - "swamp cypress"
-    - "sinker cypress"
-    - "pecky cypress"
-    - "and tidewater red cypress"
+    - "Swamp cypress"
+    - "Sinker cypress"
+    - "Pecky cypress"
+    - "Tidewater red cypress"
   Description: >-2
     Automatically created by the Woods workbench.
 Inherits:
