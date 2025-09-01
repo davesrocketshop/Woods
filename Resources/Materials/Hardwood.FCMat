@@ -37,7 +37,6 @@ Models:
   Wood:
     UUID: '901459aa-fd5e-43b8-aad6-71578f76c3f6'
     MoistureContent: "12"
-    SteamBendable: "67"
     Density: "735 kg/m^3"
     PoissonRatioLongRad: "0.381"
     PoissonRatioLongTan: "0.465"
