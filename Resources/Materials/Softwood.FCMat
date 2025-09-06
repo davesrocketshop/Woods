@@ -45,7 +45,7 @@ Models:
     PoissonRatioRadLong: "0.053"
     PoissonRatioTanLong: "0.037"
     ShearModulusLongRad: "779 MPa"
-    ShearModulusLong: "16100 kPa"
+    ShearModulusLongTan: "16100 kPa"
     YoungsModulusLong: "9500 MPa"
     YoungsModulusRadLong: "912 MPa"
     CompressiveStrengthLong: "40000 kPa"
