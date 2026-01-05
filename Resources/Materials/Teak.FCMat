@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "8449135b-0c12-4f03-9258-012f2a122e61"
   Name: "Teak"

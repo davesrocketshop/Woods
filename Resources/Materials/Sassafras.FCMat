@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "0261f07f-a43f-472f-8415-6ca1b1964ea5"
   Name: "Sassafras"

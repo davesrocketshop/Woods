@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "2b4a755a-223f-4a2a-8857-31580ec9c877"
   Name: "Madrone"

@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "a9fe7d0b-4cbe-4ed9-9057-9ae018132c96"
   Name: "Andean Alder"

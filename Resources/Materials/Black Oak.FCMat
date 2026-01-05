@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "729a0410-ed34-476e-b5a3-6fa867a0e373"
   Name: "Black Oak"

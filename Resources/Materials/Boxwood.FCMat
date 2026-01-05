@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "d31c2091-62e7-4c59-b877-180c60cc8ba8"
   Name: "Boxwood"

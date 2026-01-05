@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "bfc7f295-56b7-49f1-af02-28786d945b2b"
   Name: "Incense Cedar"

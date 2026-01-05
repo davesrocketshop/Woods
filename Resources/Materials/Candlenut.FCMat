@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "58acfc0c-2635-4d44-9c96-08dc42b8dc9c"
   Name: "Candlenut"

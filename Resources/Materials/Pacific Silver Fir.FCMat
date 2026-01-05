@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "975258c6-983e-4316-913c-3e6a8a7a6f60"
   Name: "Pacific Silver Fir"

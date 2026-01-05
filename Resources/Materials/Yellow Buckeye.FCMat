@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "a6dd4ea3-17cb-43e8-8cea-8e90e777214b"
   Name: "Yellow Buckeye"

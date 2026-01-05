@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "b5fe8cf6-3b7c-4e7c-966b-afe12d48e2c3"
   Name: "Ebiara"

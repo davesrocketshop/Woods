@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "15c0f2fe-fb84-4db8-bed0-19f8f9196a2e"
   Name: "Western Hemlock"

@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "e0f8ad52-cc96-49cc-b272-27c6b209dfbb"
   Name: "Honduran Mahogany"

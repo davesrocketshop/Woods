@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
 
 ################################################################################
 #                                                                              #
@@ -390,7 +391,8 @@ def createAppearance(base : str | None, diffuse : tuple) ->str:
 
 def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool = False) -> str:
     yam = "# SPDX-License-Identifier: LGPL-2.1-or-later\n"
-    yam = "# File created by the Woods workbench\n"
+    yam = "# SPDX-FileNotice: Part of the Woods addons.\n"
+    yam = "\n"
     yam += "General:\n"
     # Add UUIDs
     if averaged:

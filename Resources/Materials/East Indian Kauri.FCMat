@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "f372d3d8-4a6f-4c09-85ae-db4b2bfbb4b8"
   Name: "East Indian Kauri"

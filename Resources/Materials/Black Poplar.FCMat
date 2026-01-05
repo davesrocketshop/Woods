@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "c5a753af-1abf-44ff-9cf0-36c91c9561a4"
   Name: "Black Poplar"

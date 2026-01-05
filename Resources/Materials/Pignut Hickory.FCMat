@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "da286630-ef9e-45bb-87b7-b240143137a0"
   Name: "Pignut Hickory"

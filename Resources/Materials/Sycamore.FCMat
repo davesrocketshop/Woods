@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
-# File created by the Woods workbench
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "3a37297f-9faa-48d7-b1d4-14d4c058c2de"
   Name: "Sycamore"
