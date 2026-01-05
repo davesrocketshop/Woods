@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: LGPL-2.1-or-later
+
 ################################################################################
 #                                                                              #
 #   Copyright (c) 2025 David Carter <dcarter@davidcarter.ca>                   #
@@ -387,6 +389,7 @@ def createAppearance(base : str | None, diffuse : tuple) ->str:
     return yam
 
 def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool = False) -> str:
+    yam = "# SPDX-License-Identifier: LGPL-2.1-or-later\n"
     yam = "# File created by the Woods workbench\n"
     yam += "General:\n"
     # Add UUIDs
