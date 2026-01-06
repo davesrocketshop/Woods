@@ -43,11 +43,17 @@
         email = 'dcarter@davidcarter.ca'
     >David Carter</author>
 
+    <author>Gregory Holmberg</author>
+
     <!--[ Licenses ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
 
     <license
-        file = 'LICENSE'
+        file = 'LICENSE-CODE'
     >LGPL-2.1-or-later</license>
+
+    <license
+        file = 'LICENSE-DATA'
+    >CDLA-Sharing-1.0</license>
 
     <!--[ Icon ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
 
