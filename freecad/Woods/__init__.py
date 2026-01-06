@@ -28,22 +28,12 @@ __url__ = "https://www.davesrocketshop.com"
 
 
 import FreeCAD
+from pathlib import PurePath
 
-class Woods(Workbench):
-    """Woods is not *really* a workbench, so this class is basically empty."""
-
-    Icon = FreeCAD.getUserAppDataDir() + "Mod/Woods/Resources/icons/woods.png"
-
-    def __init__(self):
-        super().__init__()
-        FreeCAD.Console.PrintMessage("Woods workbench loaded\n")
-
-    def Activated(self):
-        """This function is executed when the workbench is activated"""
-
-    def Deactivated(self):
-        """This function is executed when the workbench is deactivated"""
-
-    def GetClassName(self):
-        """This function is mandatory if this is a full python workbench"""
-        return "Gui::PythonWorkbench"
+# Add materials to the user config dir
+materials = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Mod/Material/Resources/Modules/Woods")
+matdir = str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/freecad/Woods/Resources/Materials"))
+materials.SetString("ModuleDir", matdir)
+moddir = str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/freecad/Woods/Resources/Models"))
+materials.SetString("ModuleModelDir", moddir)
+materials.SetString("ModuleIcon", str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/freecad/Woods/Resources/Icons/Logo.png")))
