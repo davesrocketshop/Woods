@@ -12,7 +12,7 @@ icons = resources.files(module) / 'Resources/Icons'
 
 def asIcon ( name : str ):
 
-    file = name + '.png'
+    file = name + '.svg'
 
     icon = icons / file
 
