@@ -23,17 +23,14 @@
 #                                                                              #
 ################################################################################
 
-__author__ = "David Carter"
-__url__ = "https://www.davesrocketshop.com"
+from .Resources import materials , models , asIcon
+from FreeCAD import ParamGet
 
 
-import FreeCAD
-from pathlib import PurePath
+Parameter = 'User parameter:BaseApp/Preferences/Mod/Material/Resources/Modules/Woods'
 
-# Add materials to the user config dir
-materials = FreeCAD.ParamGet("User parameter:BaseApp/Preferences/Mod/Material/Resources/Modules/Woods")
-matdir = str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/freecad/Woods/Resources/Materials"))
-materials.SetString("ModuleDir", matdir)
-moddir = str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/freecad/Woods/Resources/Models"))
-materials.SetString("ModuleModelDir", moddir)
-materials.SetString("ModuleIcon", str(PurePath(FreeCAD.getUserAppDataDir(), "Mod/Woods/freecad/Woods/Resources/Icons/Logo.png")))
+
+config = ParamGet(Parameter)
+config.SetString('ModuleModelDir',str(models))
+config.SetString('ModuleDir',str(materials))
+config.SetString('ModuleIcon',asIcon('Logo'))

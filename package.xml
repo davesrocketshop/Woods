@@ -34,16 +34,22 @@
     <!--[ Maintainers ]――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
 
     <maintainer
+        email = 'holmberg2066@comcast.net'
+    >Gregory Holmberg</maintainer>
+
+    <maintainer
         email = 'dcarter@davidcarter.ca'
     >David Carter</maintainer>
 
     <!--[ Authors ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
 
     <author
+        email = 'holmberg2066@comcast.net'
+    >Gregory Holmberg</author>
+
+    <author
         email = 'dcarter@davidcarter.ca'
     >David Carter</author>
-
-    <author>Gregory Holmberg</author>
 
     <!--[ Licenses ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
 
@@ -75,16 +81,17 @@
     >https://github.com/davesrocketshop/Woods/issues</url>
 
     <url
+        type = 'website'
+    >https://www.davesrocketshop.com</url>
+
+    <url
         type = 'readme'
     >https://github.com/davesrocketshop/Woods/blob/master/README.md</url>
 
     <!--[ Content ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
 
     <content>
-        <workbench>
-            <subdirectory>.</subdirectory>
-            <classname>Woods</classname>
-        </workbench>
+        <other/>
     </content>
 
 </package>
