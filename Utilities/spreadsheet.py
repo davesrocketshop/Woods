@@ -39,9 +39,9 @@ from PIL import Image
 from io import BytesIO
 import math
 
-FILENAME = "Resources/Data/Wood Properties FC.xlsx"
+FILENAME = "Resources/Data/Properties.xlsx"
 IMAGES = "Resources/Data/Images"
-OUTPUT_DIR = "Resources/Materials"
+OUTPUT_DIR = "freecad/Woods/Resources/Materials"
 
 ROW_MIN = 5
 ROW_MAX = 249
