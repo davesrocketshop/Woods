@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileCopyrightText: 2025 David Carter <dcarter@davidcarter.ca>
 # SPDX-FileNotice: Part of the Woods addons.
 
 ################################################################################
@@ -17,7 +18,7 @@
 #   See the GNU Lesser General Public License for more details.                #
 #                                                                              #
 #   You should have received a copy of the GNU Lesser General Public License   #
-#   along with this addon; if not, write to the Free Software Foundation,      # 
+#   along with this addon; if not, write to the Free Software Foundation,      #
 #   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA           #
 #                                                                              #
 ################################################################################

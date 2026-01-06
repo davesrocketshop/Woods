@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileCopyrightText: 2025 David Carter <dcarter@davidcarter.ca>
 # SPDX-FileNotice: Part of the Woods addons.
 
 ################################################################################
@@ -17,7 +18,7 @@
 #   See the GNU Lesser General Public License for more details.                #
 #                                                                              #
 #   You should have received a copy of the GNU Lesser General Public License   #
-#   along with this addon; if not, write to the Free Software Foundation,      # 
+#   along with this addon; if not, write to the Free Software Foundation,      #
 #   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA           #
 #                                                                              #
 ################################################################################
@@ -390,9 +391,11 @@ def createAppearance(base : str | None, diffuse : tuple) ->str:
     return yam
 
 def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool = False) -> str:
-    yam = "# SPDX-License-Identifier: LGPL-2.1-or-later\n"
-    yam = "# SPDX-FileNotice: Part of the Woods addons.\n"
-    yam = "\n"
+    yam = ""
+    yam += "# SPDX-License-Identifier: CDLA-Sharing-1.0\n"
+    yam += "# SPDX-FileCopyrightText: 2025 Gregory Holmberg\n"
+    yam += "# SPDX-FileNotice: Part of the Woods addons.\n"
+    yam += "\n"
     yam += "General:\n"
     # Add UUIDs
     if averaged:
