@@ -1,20 +1,84 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
-  <name>Woods</name>
-  <description>Wood material database.</description>
-  <version>1.0.2</version>
-  <date>2025-09-06</date>
-  <maintainer email="dcarter@davidcarter.ca">David Carter</maintainer>
-  <license file="LICENSE">LGPL-2.1-or-later</license>
-  <url type="repository" branch="master">https://github.com/davesrocketshop/Woods</url>
-  <icon>Resources/icons/woods.png</icon>
-  <freecadmin>1.0</freecadmin>
+<?xml
+    version = '1.0'
+    encoding = 'UTF-8'
+    standalone = 'no'
+?>
+<package
+    format = '1'
+    xmlns = 'https://wiki.freecad.org/Package_Metadata'
+>
 
-  <content>
-    <workbench>
-      <classname>Woods</classname>
-      <subdirectory>./</subdirectory>
-    </workbench>
-  </content>
+    <!--[ Versions ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <freecadmin>1.0.0</freecadmin>
+    <version>1.0.2</version>
+    <date>2026-01-06</date>
+
+    <!--[ Dependencies ]―――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <depend
+        type = 'internal'
+    >material</depend>
+
+    <!--[ Info ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <description>Collection of various wood materials.</description>
+    <name>Woods</name>
+
+    <!--[ Tags ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <tag>Collection</tag>
+    <tag>Material</tag>
+    <tag>Wood</tag>
+
+    <!--[ Maintainers ]――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <maintainer
+        email = 'dcarter@davidcarter.ca'
+    >David Carter</maintainer>
+
+    <!--[ Authors ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <author
+        email = 'dcarter@davidcarter.ca'
+    >David Carter</author>
+
+    <!--[ Licenses ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <license
+        file = 'LICENSE'
+    >LGPL-2.1-or-later</license>
+
+    <!--[ Icon ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <icon>Resources/icons/woods.png</icon>
+
+    <!--[ Urls ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <url
+        type = 'documentation'
+    >https://github.com/davesrocketshop/Woods</url>
+
+    <url
+        branch = 'master'
+        type = 'repository'
+    >https://github.com/davesrocketshop/Woods</url>
+
+    <url
+        type = 'bugtracker'
+    >https://github.com/davesrocketshop/Woods/issues</url>
+
+    <url
+        type = 'readme'
+    >https://github.com/davesrocketshop/Woods/blob/master/README.md</url>
+
+    <!--[ Content ]――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
+
+    <content>
+        <workbench>
+            <subdirectory>.</subdirectory>
+            <classname>Woods</classname>
+        </workbench>
+    </content>
 
 </package>
