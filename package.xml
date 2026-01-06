@@ -61,9 +61,13 @@
         file = 'LICENSE-DATA'
     >CDLA-Sharing-1.0</license>
 
+    <license
+        file = 'LICENSE-ICON'
+    >CC-BY-SA-4.0</license>
+
     <!--[ Icon ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
 
-    <icon>freecad/Woods/Resources/Icons/Logo.png</icon>
+    <icon>freecad/Woods/Resources/Icons/Logo.svg</icon>
 
     <!--[ Urls ]―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――-->
 

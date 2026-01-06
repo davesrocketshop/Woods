@@ -22,7 +22,3 @@ holmberg2066@comcast.net
 
 David Carter
 dcarter@davidcarter.ca
-
-## Acknowledgements
-
-[Wood icon by Icons8](https://icons8.com)
