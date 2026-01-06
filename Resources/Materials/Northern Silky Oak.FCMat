@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "c994f369-235e-4560-9764-5afe9ee1c69d"
   Name: "Northern Silky Oak"

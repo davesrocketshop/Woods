@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "30b519a6-9d58-4013-9a71-f547b23c3c02"
   Name: "European Ash"

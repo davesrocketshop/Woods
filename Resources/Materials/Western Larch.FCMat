@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "dee50907-2f5e-48f1-9a09-4d7c55f43557"
   Name: "Western Larch"

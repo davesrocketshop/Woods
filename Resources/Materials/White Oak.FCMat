@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "54cb7139-8da6-4dea-9ef0-d8ce2a6eab1f"
   Name: "White Oak"

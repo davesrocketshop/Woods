@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "28e46fe0-e66e-4924-b797-b0e3cff1d8ec"
   Name: "Siamese Rosewood"

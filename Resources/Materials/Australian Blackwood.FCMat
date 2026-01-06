@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "0da5ac13-1fdb-4c83-b7e2-a0539b39b75f"
   Name: "Australian Blackwood"

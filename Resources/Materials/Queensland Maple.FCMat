@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "49e26894-3a55-470c-b3c4-81e8a83b42c0"
   Name: "Queensland Maple"

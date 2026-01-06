@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "32085a3f-bea6-46d1-b7ec-6ba087956e0d"
   Name: "Spanish Cedar"

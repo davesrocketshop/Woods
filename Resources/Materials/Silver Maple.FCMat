@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "acdf144d-fbd4-4dfd-8f92-5cb41d2b54da"
   Name: "Silver Maple"

@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "88589533-337d-4e12-a6b1-def22e206bfc"
   Name: "Gonçalo Alves"

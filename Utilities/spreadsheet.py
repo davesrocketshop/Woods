@@ -1,23 +1,27 @@
-# ***************************************************************************
-# *   Copyright (c) 2025 David Carter <dcarter@davidcarter.ca>              *
-# *                                                                         *
-# *   This program is free software; you can redistribute it and/or modify  *
-# *   it under the terms of the GNU Lesser General Public License (LGPL)    *
-# *   as published by the Free Software Foundation; either version 2 of     *
-# *   the License, or (at your option) any later version.                   *
-# *   for detail see the LICENCE text file.                                 *
-# *                                                                         *
-# *   This program is distributed in the hope that it will be useful,       *
-# *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
-# *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
-# *   GNU Library General Public License for more details.                  *
-# *                                                                         *
-# *   You should have received a copy of the GNU Library General Public     *
-# *   License along with this program; if not, write to the Free Software   *
-# *   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  *
-# *   USA                                                                   *
-# *                                                                         *
-# ***************************************************************************
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
+################################################################################
+#                                                                              #
+#   Copyright (c) 2025 David Carter <dcarter@davidcarter.ca>                   #
+#                                                                              #
+#   This addon is free software; you can redistribute it and/or modify it      #
+#   under the terms of the GNU Lesser General Public License as published      #
+#   by the Free Software Foundation; either version 2.1 of the License, or     #
+#   (at your option) any later version.                                        #
+#                                                                              #
+#   This addon is distributed in the hope that it will be useful,              #
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of             #
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                       #
+#                                                                              #
+#   See the GNU Lesser General Public License for more details.                #
+#                                                                              #
+#   You should have received a copy of the GNU Lesser General Public License   #
+#   along with this addon; if not, write to the Free Software Foundation,      # 
+#   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA           #
+#                                                                              #
+################################################################################
+
 """Class for creating material files from a spreadsheet"""
 
 __title__ = "FreeCAD Materials Generation"
@@ -386,7 +390,9 @@ def createAppearance(base : str | None, diffuse : tuple) ->str:
     return yam
 
 def createYaml(row : dict, base : str | None, diffuse : tuple, averaged : bool = False) -> str:
-    yam = "# File created by the Woods workbench\n"
+    yam = "# SPDX-License-Identifier: LGPL-2.1-or-later\n"
+    yam = "# SPDX-FileNotice: Part of the Woods addons.\n"
+    yam = "\n"
     yam += "General:\n"
     # Add UUIDs
     if averaged:

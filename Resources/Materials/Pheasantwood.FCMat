@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "669253a7-4af2-41ca-a0d6-5c85b0e75202"
   Name: "Pheasantwood"

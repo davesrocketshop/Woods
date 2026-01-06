@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "f533148c-823f-46b7-ab1e-536c6d3f011e"
   Name: "Pau Ferro"

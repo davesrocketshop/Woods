@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "a239e0ab-3abb-4b2a-86a7-83fe557dd708"
   Name: "Atlas Cedar"

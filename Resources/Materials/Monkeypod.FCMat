@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "ff4fb7cb-f4d6-4af4-8e46-e8fc60ab9f57"
   Name: "Monkeypod"

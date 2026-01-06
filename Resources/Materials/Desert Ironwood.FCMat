@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "65135745-7ac7-4d8f-bac3-8f4b8a44319e"
   Name: "Desert Ironwood"

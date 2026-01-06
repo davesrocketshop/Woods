@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "1ed2b877-a76c-44d5-af90-05dc56156d2c"
   Name: "Red Maple"

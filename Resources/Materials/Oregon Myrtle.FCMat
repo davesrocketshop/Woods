@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "29f20ce3-d9e1-4dc6-bd70-db021867fd83"
   Name: "Oregon Myrtle"

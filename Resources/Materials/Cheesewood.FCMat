@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "ee7aa155-702b-4fa1-b57b-bf9f4194abac"
   Name: "Cheesewood"

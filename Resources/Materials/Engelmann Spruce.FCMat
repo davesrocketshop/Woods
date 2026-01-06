@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "ae78b630-b9db-49f0-bf4a-fbd5cece2786"
   Name: "Engelmann Spruce"

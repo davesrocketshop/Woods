@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "fa2aed8f-10d2-4d20-bf05-8f0cd1a4471a"
   Name: "Freijo"

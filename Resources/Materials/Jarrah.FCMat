@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "84e95728-3e31-4fe1-bbc9-9318415d7ca9"
   Name: "Jarrah"

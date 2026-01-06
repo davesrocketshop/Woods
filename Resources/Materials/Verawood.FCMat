@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "8a9c11b6-ef2c-4f38-8300-ad99b02cdd89"
   Name: "Verawood"

@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "3fe90798-a2e4-46cd-bb75-b3eda2c1bc51"
   Name: "Black Tupelo"

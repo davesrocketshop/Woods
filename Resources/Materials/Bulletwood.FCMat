@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "bdcacb40-623d-446e-8fb8-4536f26709b1"
   Name: "Bulletwood"

@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "38ea39dd-2f8f-4a26-b3fa-ad10813d5872"
   Name: "Obeche"

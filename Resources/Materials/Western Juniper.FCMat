@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "0c40649b-caca-408b-88c5-0b2c2ac748a6"
   Name: "Western Juniper"

@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "e377cd75-b2dd-482e-b09c-c84315ab34c5"
   Name: "Honey Mesquite"

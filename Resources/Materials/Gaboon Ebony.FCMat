@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "06708282-1edb-4ab1-91f1-0d4d7b39a69d"
   Name: "Gaboon Ebony"

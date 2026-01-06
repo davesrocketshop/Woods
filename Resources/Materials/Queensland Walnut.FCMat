@@ -1,4 +1,6 @@
-# File created by the Woods workbench
+# SPDX-License-Identifier: LGPL-2.1-or-later
+# SPDX-FileNotice: Part of the Woods addons.
+
 General:
   UUID: "ca4af600-517b-4a73-b384-3077ceb0332d"
   Name: "Queensland Walnut"
